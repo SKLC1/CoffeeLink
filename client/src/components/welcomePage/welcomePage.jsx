@@ -9,8 +9,9 @@ function WelcomePage(){
   const [type, setType] = useState('worker');
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const {currentUser, setCurrentUser} = useContext(UserContext)
   const navigate = useNavigate()
+  //context
+  const {currentUser, setCurrentUser} = useContext(UserContext)
 
   function handleSetUserType(input){
     setType(input)
@@ -25,6 +26,7 @@ function WelcomePage(){
     });
     if(data.accessToken){
       setCurrentUser(data)
+      window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
       if(data.loggedUser.userType === 'worker'){
         navigate('/')
       } else if (data.loggedUser.userType === 'hr'){
@@ -36,7 +38,7 @@ function WelcomePage(){
   if(currentUser){
     return(
       <div>
-        <button>Logout</button>
+        <button onClick={setCurrentUser(null)}>Logout</button>
       </div>
     )
   } else {
@@ -51,7 +53,7 @@ function WelcomePage(){
       <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
       <button onClick={()=>handleLogin()}>Login</button>
       <p>Don't have an account? SignUp</p>
-    </>
+    </> 
     )
   }
 }
