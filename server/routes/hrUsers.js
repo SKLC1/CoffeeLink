@@ -66,8 +66,8 @@ hrUsersRouter.delete('/:id', async (req,res)=>{
 
 hrUsersRouter.post('/login',async(req,res)=>{
   const pass = (req.body.password)
-  const users = await HRuser.find({email: req.body.email})
-  if(users == []){
+  const users = await HRuser.findOne({email: req.body.email})
+  if(users == null){
     return res.status(400).send('Invalid Email or Password.')
   }
   console.log(users[0].password);

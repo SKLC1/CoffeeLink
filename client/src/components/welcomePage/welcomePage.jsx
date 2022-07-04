@@ -11,9 +11,9 @@ function WelcomePage(){
     setType(input)
   } 
 
-  function handleLogin(){
+  async function handleLogin(){
     const loginURL = type === 'hr'?'http://localhost:5000/hr_users/login':'http://localhost:5000/users/login';
-    const {data} = axios.post(loginURL,{
+    const {data} = await axios.post(loginURL,{
       userType: type,
       email: loginEmail,
       password: loginPassword,
@@ -27,9 +27,9 @@ function WelcomePage(){
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <p>login</p>
       <label>Email</label>
-      <input></input>
+      <input onChange={(e)=>setLoginEmail(e.target.value)}></input>
       <label>Password</label>
-      <input></input>
+      <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
       <button onClick={()=>handleLogin()}>Login</button>
       <p>Dont have an account? SignUp</p>
     </>

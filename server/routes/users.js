@@ -68,10 +68,12 @@ usersRouter.delete('/:id',async (req,res)=>{
 
 usersRouter.post('/login',async(req,res)=>{
   const pass = (req.body.password)
-  const users = await User.find({email: req.body.email})
-  if(users == []){
+  const users = await User.findOne({email: req.body.email})
+  console.log(users);
+  if(users === null){
     return res.status(400).send('Invalid Email or Password.')
   }
+  console.log(users);
   console.log(users[0].password);
   console.log(pass);
   const validPassword = await bcrypt.compare(pass, users[0].password);
