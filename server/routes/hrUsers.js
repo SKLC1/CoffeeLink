@@ -1,6 +1,7 @@
 import express from 'express'
 import { HRuser } from '../models/hrUsers.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 export const hrUsersRouter = express.Router()
 
 //get all
