@@ -27,7 +27,7 @@ function WelcomePage(){
       setCurrentUser(data)
       if(data.loggedUser.userType === 'worker'){
         navigate('/')
-      } else if (currentUser.userType === 'hr'){
+      } else if (data.loggedUser.userType === 'hr'){
         navigate('/recruiter_profile')
       }
     } 
