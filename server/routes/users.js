@@ -1,8 +1,10 @@
 import express from 'express'
 import { User } from '../models/users.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 export const usersRouter = express.Router()
-
+import dotenv from 'dotenv'
+dotenv.config()
 //get all
 usersRouter.get('/', async (req,res)=>{
   try {
@@ -77,7 +79,8 @@ usersRouter.post('/login',async(req,res)=>{
     if (!validPassword){
       return res.status(400).send('Invalid Email or Password.')
     } else {
-      res.status(200).json(users).send(`logged in as ${users[0].name}`)
+      const accessToken = jwt.sign(users[0].toJSON(), process.env.ACCESS_TOKEN_SECRET)
+      res.status(200).send({loggedUser: users[0] ,accessToken: accessToken})
     }
 } catch (error) {
     console.log(error);
