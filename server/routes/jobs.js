@@ -52,19 +52,35 @@ jobsRouter.patch('/:id', async (req,res)=>{
   }
 })
 //add CV
+// jobsRouter.patch('/', async (req,res)=>{
+//   const job = await getSpecific(req.body.idOfJob)
+//   try {
+//     const updated = await Job.findOneAndUpdate({
+//       _id: req.body.idOfJob
+//     },{
+//       $addToSet:{ applicants: req.body.cvObj }
+//     })
+//     res.status(200).json(updated)
+//   } catch (error) {
+//     res.status(400).json({error: error.message})
+//   }
+// })
+//delete CV
 jobsRouter.patch('/', async (req,res)=>{
   const job = await getSpecific(req.body.idOfJob)
-  console.log(job);
-  const didApply = job.applicants.filter(cv=>cv.uploaderID === req.body.cvObj.uploaderID)
-  console.log(didApply);
   try {
-    if(didApply === []){
-      res.status(400).send('you have already applied for this')
-    } else {
+    if(req.body.action === 'addCV'){
       const updated = await Job.findOneAndUpdate({
         _id: req.body.idOfJob
       },{
         $addToSet:{ applicants: req.body.cvObj }
+      })
+      res.status(200).json(updated)
+    } else if(req.body.action === 'removeCV'){
+      const updated = await Job.findOneAndUpdate({
+        _id: req.body.idOfJob
+      },{
+        $pull:{ applicants: req.body.cvObj }
       })
       res.status(200).json(updated)
     }
@@ -95,6 +111,6 @@ async function getSpecific(id,req,res,next){
       return user
     }
   } catch (error) {
-    console.log('item not found');
+    console.log(error);
   }
 }
