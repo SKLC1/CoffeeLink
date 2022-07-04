@@ -1,26 +1,31 @@
 import express from 'express'
-import { HRuser } from '../models/hrUsers.js'
-export const hrUsersRouter = express.Router()
+import { User } from '../models/users.js'
+export const jobsRouter = express.Router()
 
 //get all
-hrUsersRouter.get('/', async (req,res)=>{
+jobsRouter.get('/', async (req,res)=>{
   try {
-    const users = await HRuser.find()
+    const users = await User.find()
     res.json(users)
   } catch (error) {
     res.json({message: error.message})
   }
 })
 //get one
-hrUsersRouter.get('/:id', async (req,res)=>{
-  res.send(req.params.id)
+jobsRouter.get('/:id', async (req,res)=>{
+  try {
+    const user = await getSpecific(req.params.id)
+    res.json(user)
+  } catch (error) {
+    res.json({message: error.message})
+  }
 })
 //add one
-hrUsersRouter.post('/', async (req,res)=>{
+jobsRouter.post('/', async (req,res)=>{
   const bodyTest = req.body
   console.log(req.body);
   try {
-  const newUser = new HRuser({
+  const newUser = new User({
     first: req.body.first,
     last: req.body.last,
     password: req.body.password,
@@ -34,7 +39,7 @@ hrUsersRouter.post('/', async (req,res)=>{
   }
 })
 //update one
-hrUsersRouter.patch('/:id', async (req,res)=>{
+jobsRouter.patch('/:id', async (req,res)=>{
   const user = await getSpecific(req.params.id);
   if(req.body.prop !== null){
     console.log(user[req.body.prop]);
@@ -48,18 +53,18 @@ hrUsersRouter.patch('/:id', async (req,res)=>{
   }
 })
 //delete one
-hrUsersRouter.delete('/:id', async (req,res)=>{
+jobsRouter.delete('/:id',async (req,res)=>{
   try{
-    const user = await getSpecific(req.params.id);
-    await user.remove()
-    res.status(200).json('deleted successfully')
-   } catch (error) {
-    res.status(500).json({message: error.message})
-   }
+   const user = await getSpecific(req.params.id);
+   await user.remove()
+   res.status(200).json('deleted successfully')
+  } catch (error) {
+   res.status(500).json({message: error.message})
+  }
 })
 
 async function getSpecific(id,req,res,next){
-  const user = await HRuser.findById(id)
+  const user = await User.findById(id)
   try {  
     if(user == null){
       return res.status(404).json({ message: 'user not found' })
