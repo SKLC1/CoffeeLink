@@ -51,21 +51,7 @@ jobsRouter.patch('/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
-//add CV
-// jobsRouter.patch('/', async (req,res)=>{
-//   const job = await getSpecific(req.body.idOfJob)
-//   try {
-//     const updated = await Job.findOneAndUpdate({
-//       _id: req.body.idOfJob
-//     },{
-//       $addToSet:{ applicants: req.body.cvObj }
-//     })
-//     res.status(200).json(updated)
-//   } catch (error) {
-//     res.status(400).json({error: error.message})
-//   }
-// })
-//delete CV
+//  add/delete CV
 jobsRouter.patch('/', async (req,res)=>{
   const job = await getSpecific(req.body.idOfJob)
   try {
