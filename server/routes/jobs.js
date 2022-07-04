@@ -51,6 +51,28 @@ jobsRouter.patch('/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
+//add CV
+jobsRouter.patch('/', async (req,res)=>{
+  const job = await getSpecific(req.body.idOfJob)
+  console.log(job);
+  const didApply = job.applicants.filter(cv=>cv.uploaderID === req.body.cvObj.uploaderID)
+  console.log(didApply);
+  try {
+    if(didApply === []){
+      res.status(400).send('you have already applied for this')
+    } else {
+      const updated = await Job.findOneAndUpdate({
+        _id: req.body.idOfJob
+      },{
+        $addToSet:{ applicants: req.body.cvObj }
+      })
+      res.status(200).json(updated)
+    }
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
 //delete one
 jobsRouter.delete('/:id',async (req,res)=>{
   try{
@@ -64,6 +86,8 @@ jobsRouter.delete('/:id',async (req,res)=>{
 
 async function getSpecific(id,req,res,next){
   const user = await Job.findById(id)
+  console.log(id);
+  console.log(user);
   try {  
     if(user == null){
       return res.status(404).json({ message: 'user not found' })
@@ -71,6 +95,6 @@ async function getSpecific(id,req,res,next){
       return user
     }
   } catch (error) {
-    return res.status(500).json({message: error.message})
+    console.log('item not found');
   }
 }
