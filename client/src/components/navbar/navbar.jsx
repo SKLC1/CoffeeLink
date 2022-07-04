@@ -7,8 +7,8 @@ function Navbar(){
 
   return(
     <>
-    <div>{currentUser && currentUser.first}</div>
     <div>im Navbar</div>
+    <div>{currentUser && `logged in as ${currentUser.loggedUser.first}`}</div>
     </>
   )
 }

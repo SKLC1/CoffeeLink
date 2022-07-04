@@ -11,6 +11,7 @@ function WelcomePage(){
   const [loginPassword, setLoginPassword] = useState('');
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const navigate = useNavigate()
+
   function handleSetUserType(input){
     setType(input)
   } 
@@ -23,11 +24,22 @@ function WelcomePage(){
       password: loginPassword,
     });
     if(data.accessToken){
-      setCurrentUser(data.loggedUser)
-      navigate('/')
+      setCurrentUser(data)
+      if(data.loggedUser.userType === 'worker'){
+        navigate('/')
+      } else if (currentUser.userType === 'hr'){
+        navigate('/recruiter_profile')
+      }
     } 
   }
   
+  if(currentUser){
+    return(
+      <div>
+        <button>Logout</button>
+      </div>
+    )
+  } else {
     return(
       <>
     <div>welcome to CoffeeLink!</div>
@@ -40,6 +52,7 @@ function WelcomePage(){
       <button onClick={()=>handleLogin()}>Login</button>
       <p>Don't have an account? SignUp</p>
     </>
-  )
+    )
+  }
 }
 export default WelcomePage
