@@ -1,12 +1,16 @@
 import axios from "axios"
+import { useContext } from "react";
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext.js";
 import ToggleUserType from "../resuableComponents/toggleUserType/toggleUserType.jsx"
 
 function WelcomePage(){
   const [type, setType] = useState('worker');
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-
+  const {currentUser, setCurrentUser} = useContext(UserContext)
+  const navigate = useNavigate()
   function handleSetUserType(input){
     setType(input)
   } 
@@ -18,7 +22,10 @@ function WelcomePage(){
       email: loginEmail,
       password: loginPassword,
     });
-    console.log(data);
+    if(data.accessToken){
+      setCurrentUser(data.loggedUser)
+      navigate('/')
+    } 
   }
   
     return(

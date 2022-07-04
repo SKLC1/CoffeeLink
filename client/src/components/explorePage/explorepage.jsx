@@ -2,10 +2,13 @@ import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
 import JobCard from "../resuableComponents/jobCard/jobCard.jsx"
+import RotateLoader from "react-spinners/RotateLoader";
+
 
 
 function ExplorePage(){
   const [cards,setCards] = useState([])
+  const [loading,setLoading] = useState(true)
 
   useEffect(()=>{
    showJobsToUser()
@@ -14,11 +17,10 @@ function ExplorePage(){
   async function showJobsToUser(){
     const {data} = await axios.get('http://localhost:5000/jobs')
     setCards(data)
-    console.log(cards);
+    setLoading(false)
   }
   function renderCards(){
     return cards.map((card)=>{
-      console.log(card);
       return <JobCard card={card} key={card._id}/>;
     })
   }
@@ -26,6 +28,7 @@ function ExplorePage(){
   return(
     <>
       <div>
+        <RotateLoader loading={loading}/>
         {renderCards()}
       </div>
     </>
