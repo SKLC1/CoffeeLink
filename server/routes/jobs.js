@@ -1,5 +1,5 @@
 import express from 'express'
-import { User } from '../models/users.js'
+import { Job } from '../models/jobs.js'
 export const jobsRouter = express.Router()
 
 //get all
@@ -26,7 +26,10 @@ jobsRouter.post('/', async (req,res)=>{
   console.log(req.body);
   try {
   const newUser = new Job({
-    
+    company: req.body.company,
+    role_title: req.body.role_title,
+    job_description: req.body.job_description,
+    posted_by: req.body.postedBy
   })
   await newUser.save()
   res.status(201).json(newUser)

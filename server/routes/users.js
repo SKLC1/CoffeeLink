@@ -86,6 +86,7 @@ usersRouter.post('/login',async(req,res)=>{
 
 async function getSpecific(id,req,res,next){
   const user = await User.findById(id)
+  console.log(user);
   try {  
     if(user == null){
       return res.status(404).json({ message: 'user not found' })

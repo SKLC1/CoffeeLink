@@ -14,7 +14,12 @@ hrUsersRouter.get('/', async (req,res)=>{
 })
 //get one
 hrUsersRouter.get('/:id', async (req,res)=>{
-  res.send(req.params.id)
+  try {
+    const users = await HRuser.findById(req.params.id)
+    res.json(users)
+  } catch (error) {
+    res.json({message: error.message})
+  }
 })
 //add one
 hrUsersRouter.post('/', async (req,res)=>{
@@ -57,6 +62,26 @@ hrUsersRouter.delete('/:id', async (req,res)=>{
    } catch (error) {
     res.status(500).json({message: error.message})
    }
+})
+
+hrUsersRouter.post('/login',async(req,res)=>{
+  const pass = (req.body.password)
+  const users = await HRuser.find({email: req.body.email})
+  if(users == []){
+    return res.status(400).send('Invalid Email or Password.')
+  }
+  console.log(users[0].password);
+  console.log(pass);
+  const validPassword = await bcrypt.compare(pass, users[0].password);
+  try {
+    if (!validPassword){
+      return res.status(400).send('Invalid Email or Password.')
+    } else {
+      res.status(200).json(users).send(`logged in as ${users[0].name}`)
+    }
+} catch (error) {
+    console.log(error);
+  }
 })
 
 async function getSpecific(id,req,res,next){
