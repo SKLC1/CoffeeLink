@@ -6,7 +6,7 @@ export const usersRouter = express.Router()
 import dotenv from 'dotenv'
 dotenv.config()
 //get all
-usersRouter.get('/', async (req,res)=>{
+usersRouter.get('/',authenticateToken, async (req,res)=>{
   try {
     const users = await User.find()
     res.json(users)
@@ -99,4 +99,18 @@ async function getSpecific(id,req,res,next){
   } catch (error) {
     return res.status(500).json({message: error.message})
   }
+}
+
+//auth jwt
+
+function authenticateToken(req,res,next){
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]
+  if(token == null) return res.sendStatus(401)
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,user)=>{
+    if(err) return res.send(403)
+    req.user = user
+    next()
+  })
 }
