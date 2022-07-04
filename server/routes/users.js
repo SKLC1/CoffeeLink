@@ -74,15 +74,15 @@ usersRouter.post('/login',async(req,res)=>{
     return res.status(400).send('Invalid Email or Password.')
   }
   console.log(users);
-  console.log(users[0].password);
+  console.log(users.password);
   console.log(pass);
-  const validPassword = await bcrypt.compare(pass, users[0].password);
+  const validPassword = await bcrypt.compare(pass, users.password);
   try {
     if (!validPassword){
       return res.status(400).send('Invalid Email or Password.')
     } else {
-      const accessToken = jwt.sign(users[0].toJSON(), process.env.ACCESS_TOKEN_SECRET)
-      res.status(200).send({loggedUser: users[0] ,accessToken: accessToken})
+      const accessToken = jwt.sign(users.toJSON(), process.env.ACCESS_TOKEN_SECRET)
+      res.status(200).send({loggedUser: users ,accessToken: accessToken})
     }
 } catch (error) {
     console.log(error);

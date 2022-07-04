@@ -3,9 +3,9 @@ import { useState } from "react"
 import ToggleUserType from "../resuableComponents/toggleUserType/toggleUserType.jsx"
 
 function WelcomePage(){
-  const [type, setType] = useState('worker')
-  const [loginEmail, setLoginEmail] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
+  const [type, setType] = useState('worker');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
 
   function handleSetUserType(input){
     setType(input)
@@ -21,8 +21,8 @@ function WelcomePage(){
     console.log(data);
   }
   
-  return(
-    <>
+    return(
+      <>
     <div>welcome to CoffeeLink!</div>
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <p>login</p>
@@ -31,7 +31,7 @@ function WelcomePage(){
       <label>Password</label>
       <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
       <button onClick={()=>handleLogin()}>Login</button>
-      <p>Dont have an account? SignUp</p>
+      <p>Don't have an account? SignUp</p>
     </>
   )
 }
