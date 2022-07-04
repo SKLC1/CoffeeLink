@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt'
 
 const userScheme = new mongoose.Schema({
   first: {type: String, required: true},
@@ -11,7 +12,6 @@ const userScheme = new mongoose.Schema({
   applied: [Object],
 })
 
-export const User = mongoose.model('users', userScheme)
 
 userScheme.pre('save',async function(next) {
   try{
@@ -28,11 +28,12 @@ userScheme.pre('save',async function(next) {
 userScheme.methods.comparePassword = async function (password) {
   if(!password) throw new Error('no password')
   try{
-   const result = await bcrypt.compare(password, this.password)
-   return result;
+    const result = await bcrypt.compare(password, this.password)
+    return result;
   } catch (err) {
-   console.log(err);
+    console.log(err);
   }
 }
 
-export default mongoose.model('user', userScheme)
+
+export const User = mongoose.model('users', userScheme)

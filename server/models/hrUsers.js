@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt'
+
 
 const hrUserScheme = new mongoose.Schema({
   first: {type: String, required: true},
@@ -11,7 +13,6 @@ const hrUserScheme = new mongoose.Schema({
   matches: [String],
 })
 
-export const HRuser = mongoose.model('hr_users', hrUserScheme)
 
 hrUserScheme.pre('save',async function(next) {
   try{
@@ -24,15 +25,15 @@ hrUserScheme.pre('save',async function(next) {
     next()
   }
 })
-// hash password
+
 hrUserScheme.methods.comparePassword = async function (password) {
   if(!password) throw new Error('no password')
   try{
-   const result = await bcrypt.compare(password, this.password)
-   return result;
+    const result = await bcrypt.compare(password, this.password)
+    return result;
   } catch (err) {
    console.log(err);
   }
 }
 
-export default mongoose.model('user', userScheme)
+export const HRuser = mongoose.model('hr_users', hrUserScheme)

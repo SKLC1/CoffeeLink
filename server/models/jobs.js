@@ -9,4 +9,4 @@ const jobScheme = new mongoose.Schema({
   approved: [Object],
 })
 
-export const User = mongoose.model('jobs', jobScheme)
+export const Job = mongoose.model('jobs', jobScheme)

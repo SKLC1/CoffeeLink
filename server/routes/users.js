@@ -1,5 +1,6 @@
 import express from 'express'
 import { User } from '../models/users.js'
+import bcrypt from 'bcrypt'
 export const usersRouter = express.Router()
 
 //get all
@@ -60,6 +61,26 @@ usersRouter.delete('/:id',async (req,res)=>{
    res.status(200).json('deleted successfully')
   } catch (error) {
    res.status(500).json({message: error.message})
+  }
+})
+
+usersRouter.post('/login',async(req,res)=>{
+  const pass = (req.body.password)
+  const users = await User.find({email: req.body.email})
+  if(users == []){
+    return res.status(400).send('Invalid Email or Password.')
+  }
+  console.log(users[0].password);
+  console.log(pass);
+  const validPassword = await bcrypt.compare(pass, users[0].password);
+  try {
+    if (!validPassword){
+      return res.status(400).send('Invalid Email or Password.')
+    } else {
+      res.status(200).json(users).send(`logged in as ${users[0].name}`)
+    }
+} catch (error) {
+    console.log(error);
   }
 })
 
