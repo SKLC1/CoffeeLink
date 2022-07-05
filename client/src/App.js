@@ -28,7 +28,7 @@ function App() {
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>
           <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
-          <Route exact path='/profile/cv_upload' element={<CVupload/>}></Route>
+          <Route exact path='/cv_upload' element={<CVupload/>}></Route>
         </Routes>
       </Router>
       </UserContext.Provider>

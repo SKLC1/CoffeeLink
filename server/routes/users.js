@@ -55,6 +55,20 @@ usersRouter.patch('/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
+// ADD CV TO USER 
+usersRouter.patch('/addCV/:id', async (req,res)=>{
+  try {
+    const updated = await User.findOneAndUpdate({
+      _id: req.params.id
+    },{
+      cv: req.body.cv 
+    })
+    res.status(200).json(updated)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
 //delete one
 usersRouter.delete('/:id',async (req,res)=>{
   try{

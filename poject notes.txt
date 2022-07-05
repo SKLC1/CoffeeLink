@@ -8,3 +8,7 @@ to do list:
 
 also:
 -create sign up page
+
+
+extras:
+-scan user's cv and format it

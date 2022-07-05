@@ -1,7 +1,11 @@
+import axios from "axios";
 import { useState } from "react";
-
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
 function CVupload() {
+  const {currentUser} = useContext(UserContext)
+
   const [cv, setCV] = useState({
     name:"",
     email:"",
@@ -19,8 +23,13 @@ function CVupload() {
       return {...prev, [name]: value}
     })
   }
-  function handleSubmit(){
+  async function handleSubmit(e){
+    e.preventDefault();
     console.log(cv);
+    const curUserId = currentUser.loggedUser._id
+    console.log(curUserId);
+    const {data} = await axios.patch(`http://localhost:5000/users/addCV/${curUserId}`,{cv})
+    console.log(data);
   }
 
   return ( 

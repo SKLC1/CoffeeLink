@@ -9,8 +9,7 @@ function WorkerProfile() {
     <>
       <div>profile page</div>
       <div>{currentUser.loggedUser.first}</div>
-      <Link to='cv_upload'><div>Upload your CV</div></Link>
-
+      <Link to={'/cv_upload'}><div>Upload your CV</div></Link>
     </>
    );
 }

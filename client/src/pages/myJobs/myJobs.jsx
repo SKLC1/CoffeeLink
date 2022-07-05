@@ -19,7 +19,6 @@ function MyJobs() {
 
   async function getUpdatedCurrentUser(){
     const getOneUrl =  `http://localhost:5000/hr_users/${id.split(':')[1]}`;
-    console.log(getOneUrl);
      const {data} = await axios.get(getOneUrl);
     setUserJobs(data.posted_jobs)
   }
