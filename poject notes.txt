@@ -2,7 +2,8 @@ to do list:
 ✅-create CV
 ✅-send CV when swiping right
 ✅-create sign up page
--create Job cv slideing page
+✅-create Job cv slideing page
+-let HR post a job
 -create CV revirew preference page
 -make CV apear according to users saved settings
 -dont show cv to user twice

@@ -29,7 +29,7 @@ function MyJobs() {
       return userJobs.map(job=>{
         console.log(job);
         return(
-          <div><HRjobCard job={job}/></div>
+          <div><HRjobCard job={job} key={job._id}/></div>
         )
     })
     } else {

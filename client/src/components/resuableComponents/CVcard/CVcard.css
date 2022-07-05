@@ -1,0 +1,17 @@
+.cv-card{
+  width: 50vh;
+  height: 50vh;
+  border: solid;
+  border-radius: 15px;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  background-color: #fff;
+ }
+ .card-container{
+   display: flex;
+   justify-content: center;
+ }
+ 
+ .swipe{
+   position: absolute;
+ }
