@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import ExplorePage from './components/explorePage/explorepage.jsx';
 import Navbar from './components/navbar/navbar.jsx';
+import SignUp from './components/welcomePage/signup/signup.jsx';
 import WelcomePage from './components/welcomePage/welcomePage.jsx';
 import CVupload from './pages/cvUpload/cvUpload.jsx';
 import MyJobs from './pages/myJobs/myJobs.jsx';
@@ -21,9 +22,10 @@ function App() {
     <div>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
       <Router>
-      <Navbar/>
+      {/* <Navbar/> */}
         <Routes>
           <Route exact path='/login' element={<WelcomePage/>}></Route>
+          <Route exact path='/signup' element={<SignUp/>}></Route>
           <Route exact path='/' element={<ExplorePage/>}></Route>
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>
           <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>

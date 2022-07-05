@@ -15,12 +15,11 @@ function ExplorePage(){
   const navigate = useNavigate()
 
   useEffect(()=>{
-   if(currentUser){
-     showJobsToUser()
-   } else {
-     navigate('/login')
-   }
+   isLoggedIn()
   },[])
+  function isLoggedIn(){
+    currentUser?showJobsToUser():navigate('/login')
+  }
 
   async function showJobsToUser(){
     const {data} = await axios.get('http://localhost:5000/jobs')
@@ -30,7 +29,7 @@ function ExplorePage(){
   
   function renderCards(){
     return cards.map((card)=>{
-      return <JobCard card={card} key={card._id}/>;
+      return <JobCard card={card} key={card._id} currentUser={currentUser}/>;
     })
   }
   

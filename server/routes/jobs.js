@@ -51,6 +51,7 @@ jobsRouter.patch('/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
+
 //  add/delete CV
 jobsRouter.patch('/', async (req,res)=>{
   const job = await getSpecific(req.body.idOfJob)

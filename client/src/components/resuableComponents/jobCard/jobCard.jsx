@@ -2,7 +2,7 @@ import axios from 'axios';
 import TinderCard from 'react-tinder-card'
 import './jobCard.css'
 
-function JobCard({card}){
+function JobCard({card, currentUser}){
   
   const onSwipe = (direction) => {
     if(direction == 'right'){
@@ -15,7 +15,16 @@ function JobCard({card}){
   }
   
   async function addUserToApplied(){
-    
+    const {loggedUser} = currentUser;
+    const {data} = await axios.patch('http://localhost:5000/jobs',{
+      idOfJob: card._id,
+      action: "addCV",
+      cvObj: {
+        applicantID: loggedUser._id,
+        cv: loggedUser.cv
+      }
+    });
+    console.log(data);
   }
 
   return(

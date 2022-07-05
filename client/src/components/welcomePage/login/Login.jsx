@@ -1,7 +1,7 @@
 
 import axios from "axios"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function Login({setCurrentUser}){
@@ -42,7 +42,7 @@ function Login({setCurrentUser}){
        <label>Password</label>
        <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
        <button onClick={()=>handleLogin()}>Login</button>
-       <p>Don't have an account? SignUp</p>
+       <p>Don't have an account? <Link to='/signup'><p>Sign Up</p></Link></p>
       </>
      )
 }
