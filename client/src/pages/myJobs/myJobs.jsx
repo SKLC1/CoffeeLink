@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import HRjobCard from "../../components/HRjobCard/HRjobCard";
 import { UserContext } from "../../UserContext";
 import { useParams } from 'react-router-dom';
 
 
+
 function MyJobs() {
-  const {currentUser} = useContext(UserContext)
+  const {currentUser, setCurrentUser} = useContext(UserContext)
+  const [userJobs, setUserJobs] = useState([])
   const { id } = useParams();
+
 
   useEffect(()=>{
     getUpdatedCurrentUser()
@@ -17,16 +20,17 @@ function MyJobs() {
   async function getUpdatedCurrentUser(){
     const getOneUrl =  `http://localhost:5000/hr_users/${id.split(':')[1]}`;
     console.log(getOneUrl);
-    const {data} = await axios.get(getOneUrl);
-    console.log(data);
+     const {data} = await axios.get(getOneUrl);
+    setUserJobs(data.posted_jobs)
   }
 
 
   function renderPostedJobs(){
-    if(currentUser.posted_jobs.length > 0){
-      currentUser.posted_jobs.map(job=>{
+    if(userJobs.length > 0){
+      return userJobs.map(job=>{
+        console.log(job);
         return(
-          <><HRjobCard job={job}/></>
+          <div><HRjobCard job={job}/></div>
         )
     })
     } else {
@@ -40,8 +44,8 @@ function MyJobs() {
   
   return ( 
     <>
-     <button>Post Job</button>
-     {/* <div>{renderPostedJobs()}</div> */}
+     <div>{renderPostedJobs()}</div>
+     <div className="hr-job-card">Post Job</div>
     </>
    );
 }

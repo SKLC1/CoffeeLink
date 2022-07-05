@@ -1,10 +1,11 @@
-
+import './HRjobCard.css'
 
 function HRjobCard({job}) {
   return ( 
     <>
-     <div>
-       {JSON.stringify(job)}
+     <div className='hr-job-card'>
+       <div>{job.company}</div>
+       <div>{job.role_title}</div>
      </div>
     </>
    );
