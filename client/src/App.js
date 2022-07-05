@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import ExplorePage from './components/explorePage/explorepage.jsx';
 import Navbar from './components/navbar/navbar.jsx';
 import WelcomePage from './components/welcomePage/welcomePage.jsx';
+import MyJobs from './pages/myJobs/myJobs.jsx';
 import RecruiterProfile from './pages/recruiterProfile/recruiterProfile.jsx';
 import { UserContext } from './UserContext.js';
 
@@ -23,7 +24,7 @@ function App() {
           <Route exact path='/login' element={<WelcomePage/>}></Route>
           <Route exact path='/' element={<ExplorePage/>}></Route>
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>
-  
+          <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>
         </Routes>
       </Router>
       </UserContext.Provider>

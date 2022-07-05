@@ -54,6 +54,19 @@ hrUsersRouter.patch('/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
+// ADD job ref to hr user
+hrUsersRouter.patch('/addJob/:id', async (req,res)=>{
+  try {
+    const updated = await HRuser.findOneAndUpdate({
+      _id: req.params.id
+    },{
+      $addToSet:{ posted_jobs: req.body }
+    })
+    res.status(200).json(updated)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
 //delete one
 hrUsersRouter.delete('/:id', async (req,res)=>{
   try{
@@ -64,7 +77,7 @@ hrUsersRouter.delete('/:id', async (req,res)=>{
     res.status(500).json({message: error.message})
    }
 })
-
+//login
 hrUsersRouter.post('/login',async(req,res)=>{
   const pass = (req.body.password)
   const users = await HRuser.findOne({email: req.body.email})

@@ -34,17 +34,11 @@ function WelcomePage(){
       }
     } 
   }
-  
-  if(currentUser){
+
+  function Login(){
     return(
-      <div>
-        <button onClick={setCurrentUser(null)}>Logout</button>
-      </div>
-    )
-  } else {
-    return(
-      <>
-    <div>welcome to CoffeeLink!</div>
+     <>
+      <div>welcome to CoffeeLink!</div>
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <p>login</p>
       <label>Email</label>
@@ -53,8 +47,18 @@ function WelcomePage(){
       <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
       <button onClick={()=>handleLogin()}>Login</button>
       <p>Don't have an account? SignUp</p>
-    </> 
+     </>
     )
   }
+  function Logout(){
+    return(
+      <button>Logout</button>
+    )
+  }
+  return(
+    <>
+     { currentUser?<Logout/>:<Login/>}
+    </> 
+  )
 }
 export default WelcomePage
