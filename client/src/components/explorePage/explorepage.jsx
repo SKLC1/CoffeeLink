@@ -27,6 +27,7 @@ function ExplorePage(){
     setCards(data)
     setLoading(false)
   }
+  
   function renderCards(){
     return cards.map((card)=>{
       return <JobCard card={card} key={card._id}/>;
