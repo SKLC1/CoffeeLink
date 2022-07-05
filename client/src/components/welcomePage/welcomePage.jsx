@@ -19,7 +19,7 @@ function WelcomePage(){
   }
   return(
     <>
-     { currentUser?<Logout/>: <Login setCurrentUser={setCurrentUser}/>}
+     { currentUser.loggedUser?<Logout/>: <Login setCurrentUser={setCurrentUser}/>}
     </> 
   )
 }

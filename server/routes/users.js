@@ -15,7 +15,7 @@ usersRouter.get('/',authenticateToken, async (req,res)=>{
   }
 })
 //get one
-usersRouter.get('/:id', async (req,res)=>{
+usersRouter.get('/:id',async (req,res)=>{
   try {
     const user = await getSpecific(req.params.id)
     res.json(user)
@@ -25,7 +25,6 @@ usersRouter.get('/:id', async (req,res)=>{
 })
 //add one
 usersRouter.post('/', async (req,res)=>{
-  const bodyTest = req.body
   console.log(req.body);
   try {
   const newUser = new User({
