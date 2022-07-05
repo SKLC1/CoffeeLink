@@ -67,6 +67,19 @@ usersRouter.patch('/addCV/:id', async (req,res)=>{
     res.status(400).json({error: error.message})
   }
 })
+//add match to user
+usersRouter.patch('/addMatch/:id', async (req,res)=>{
+  try {
+    const updated = await User.findOneAndUpdate({
+      _id: req.params.id
+    },{
+      $addToSet:{ matches: req.body.match }
+    })
+    res.status(200).json(updated)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
 
 //delete one
 usersRouter.delete('/:id',async (req,res)=>{

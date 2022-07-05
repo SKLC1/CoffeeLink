@@ -20,7 +20,7 @@ function ReviewCV() {
   
   function renderCVlist(){
     return CVList.map(cvObj=>{
-      return <CVcard cv={cvObj.cv} key={cvObj.applicantID}/>
+      return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID}/>
     })
   }
 
