@@ -1,0 +1,10 @@
+to do list:
+-create CV
+-send CV when swiping right
+-create CV revirew preference page
+-make CV apear according to users saved settings
+-dont show cv to user twice
+
+
+also:
+-create sign up page
