@@ -46,7 +46,7 @@ function ExplorePage(){
     <>
       <div>
         <RotateLoader loading={loading}/>
-        {(currentUser && 'cv' in currentUser)?renderCards():mustHaveCVMsg()}
+        {(currentUser)?renderCards():mustHaveCVMsg()}
       </div>
     </>
   )
