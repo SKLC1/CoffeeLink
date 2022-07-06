@@ -22,17 +22,22 @@ jobsRouter.get('/:id', async (req,res)=>{
 })
 //add one
 jobsRouter.post('/', async (req,res)=>{
-  const bodyTest = req.body
   console.log(req.body);
+  const {company,role_title,job_requirements,job_description,
+    posted_by,location,job_time,job_type} = req.body.jobObj
   try {
-  const newUser = new Job({
-    company: req.body.company,
-    role_title: req.body.role_title,
-    job_description: req.body.job_description,
-    posted_by: req.body.postedBy
+  const newJob = new Job({
+    company,
+    role_title,
+    job_requirements,
+    job_description,
+    location,
+    job_time,
+    job_type,
+    posted_by,
   })
-  await newUser.save()
-  res.status(201).json(newUser)
+  await newJob.save()
+  res.status(201).json(newJob)
   } catch (error) {
     res.status(400).json({message: error.message})
   }

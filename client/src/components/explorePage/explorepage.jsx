@@ -35,7 +35,7 @@ function ExplorePage(){
   function mustHaveCVMsg(){
     return(
       <div>
-        <h3>Soory</h3>
+        <h3>Sorry</h3>
         <div>You Must Upload your Dynamic CV first</div>
         <Link to='/cv_upload'><div>Upload CV</div></Link>
       </div>

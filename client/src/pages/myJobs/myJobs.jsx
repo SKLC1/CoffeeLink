@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useEffect } from "react";
 import HRjobCard from "../../components/HRjobCard/HRjobCard";
 import { UserContext } from "../../UserContext";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 
@@ -44,7 +44,7 @@ function MyJobs() {
   return ( 
     <>
      <div>{renderPostedJobs()}</div>
-     <div className="hr-job-card">Post Job</div>
+     <div className="hr-job-card"><Link to='/post_job'>Post Job</Link></div>
     </>
    );
 }

@@ -5,7 +5,8 @@ import { Link} from "react-router-dom"
 
 
 function Navbar(){
-  const {currentUser, setCurrentUser} = useContext(UserContext)
+  const {currentUser, setCurrentUser} = useContext(UserContext);
+
   
   return(
     <>
@@ -13,6 +14,7 @@ function Navbar(){
     <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
       {currentUser && `logged in as ${currentUser.loggedUser.first}`}
     </Link>
+    <Link to='login'>logout</Link>
     </>
   )
 }
