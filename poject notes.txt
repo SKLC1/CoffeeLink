@@ -3,7 +3,7 @@ to do list:
 ✅-send CV when swiping right
 ✅-create sign up page
 ✅-create Job cv slideing page
--let HR post a job
+✅-let HR post a job
 ✅-create match event
 -create CV revirew preference page
 -make CV apear according to users saved settings
