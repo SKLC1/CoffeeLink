@@ -7,7 +7,6 @@ import { Link} from "react-router-dom"
 function Navbar(){
   const {currentUser, setCurrentUser} = useContext(UserContext)
   
-  
   return(
     <>
     <div>im Navbar</div>

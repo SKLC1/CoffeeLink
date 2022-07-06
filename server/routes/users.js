@@ -6,7 +6,7 @@ export const usersRouter = express.Router()
 import dotenv from 'dotenv'
 dotenv.config()
 //get all
-usersRouter.get('/',authenticateToken, async (req,res)=>{
+usersRouter.get('/', async (req,res)=>{
   try {
     const users = await User.find()
     res.json(users)
@@ -94,6 +94,7 @@ usersRouter.delete('/:id',async (req,res)=>{
 
 usersRouter.post('/login',async(req,res)=>{
   const pass = (req.body.password)
+  console.log(req.body);
   const users = await User.findOne({email: req.body.email})
   console.log(users);
   if(users === null){

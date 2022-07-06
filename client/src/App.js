@@ -23,7 +23,7 @@ function App() {
     <div>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
       <Router>
-      {/* <Navbar/> */}
+      <Navbar/>
         <Routes>
           <Route exact path='/login' element={<WelcomePage/>}></Route>
           <Route exact path='/signup' element={<SignUp/>}></Route>

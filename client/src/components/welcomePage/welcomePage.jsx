@@ -9,7 +9,7 @@ function WelcomePage(){
   
   function handleLogout(){
     setCurrentUser(null)
-    window.localStorage.setItem('CURRENT_USER', JSON.stringify({}))
+    window.localStorage.setItem('CURRENT_USER', JSON.stringify(null))
   }
 
   function Logout(){
@@ -19,7 +19,7 @@ function WelcomePage(){
   }
   return(
     <>
-     { currentUser.loggedUser?<Logout/>: <Login setCurrentUser={setCurrentUser}/>}
+     { currentUser?<Logout/>: <Login setCurrentUser={setCurrentUser}/>}
     </> 
   )
 }

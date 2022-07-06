@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import JobCard from "../resuableComponents/jobCard/jobCard.jsx"
 import RotateLoader from "react-spinners/RotateLoader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext.js";
 
@@ -32,12 +32,21 @@ function ExplorePage(){
       return <JobCard card={card} key={card._id} currentUser={currentUser}/>;
     })
   }
+  function mustHaveCVMsg(){
+    return(
+      <div>
+        <h3>Soory</h3>
+        <div>You Must Upload your Dynamic CV first</div>
+        <Link to='/cv_upload'><div>Upload CV</div></Link>
+      </div>
+    )
+  }
   
   return(
     <>
       <div>
         <RotateLoader loading={loading}/>
-        {renderCards()}
+        {(currentUser && 'cv' in currentUser)?renderCards():mustHaveCVMsg()}
       </div>
     </>
   )
