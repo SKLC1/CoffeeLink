@@ -9,6 +9,7 @@ import MyJobs from './pages/myJobs/myJobs.jsx';
 import RecruiterProfile from './pages/recruiterProfile/recruiterProfile.jsx';
 import ReviewCV from './pages/reviewCV/reviewCV.jsx';
 import UploadJob from './pages/uploadJob/uploadJob.jsx';
+import WorkerMatches from './pages/workerMatches/workerMatches.jsx';
 import WorkerProfile from './pages/workerProfile/workerProfile.jsx';
 import { UserContext } from './UserContext.js';
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>
           <Route exact path='/review:job' element={<ReviewCV/>}></Route>
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
+          <Route exact path='/my_matches' element={<WorkerMatches  currentUser={currentUser}/>}></Route>
           <Route exact path='/cv_upload' element={<CVupload/>}></Route>
           <Route exact path='/post_job' element={<UploadJob/>}></Route>
         </Routes>
