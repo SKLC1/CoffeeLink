@@ -6,7 +6,6 @@ import { UserContext } from "../../UserContext";
 import { Link, useParams } from 'react-router-dom';
 
 
-
 function MyJobs() {
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const [userJobs, setUserJobs] = useState([])
@@ -18,18 +17,18 @@ function MyJobs() {
   },[])
 
   async function getUpdatedCurrentUser(){
-    const getOneUrl =  `http://localhost:5000/hr_users/${id.split(':')[1]}`;
-     const {data} = await axios.get(getOneUrl);
+    const getOneUrl = `http://localhost:5000/hr_users/${id.split(':')[1]}`;
+    const {data} = await axios.get(getOneUrl);
+    console.log(data);
     setUserJobs(data.posted_jobs)
   }
-
 
   function renderPostedJobs(){
     if(userJobs.length > 0){
       return userJobs.map(job=>{
-        console.log(job);
+        console.log(job.job);
         return(
-          <div><HRjobCard job={job} key={job._id}/></div>
+          <div><HRjobCard job={job.job} key={job._id}/></div>
         )
     })
     } else {

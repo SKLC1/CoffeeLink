@@ -25,10 +25,16 @@ function UploadJob() {
   }
   async function handleSubmit(e){
     e.preventDefault();
-    console.log(jobObj);
     const curUserId = currentUser.loggedUser._id
     console.log(curUserId);
     const {data} = await axios.post('http://localhost:5000/jobs',{jobObj})
+    console.log(data);
+    //add job to hr
+    addJobToHR(curUserId,data)
+  }
+  
+  async function addJobToHR(userID,job){
+    const {data} = await axios.patch(`http://localhost:5000/hr_users/addJob/${userID}`,{job})
     console.log(data);
   }
 

@@ -23,11 +23,18 @@ function ReviewCV() {
       return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID}/>
     })
   }
+  function noApplicants(){
+    return(
+      <>
+      <div>no applicants yet</div>
+      </>
+    )
+  }
 
   return ( 
     <div>
       <p>review page</p>
-      {renderCVlist()}
+      {CVList.length === 0?noApplicants():renderCVlist()}
     </div>
    );
 }
