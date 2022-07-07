@@ -14,7 +14,8 @@ function Navbar(){
     <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
       {currentUser && `logged in as ${currentUser.loggedUser.first}`}
     </Link>
-    <Link to='login'>logout</Link>
+    <Link to='/'>Explore</Link>
+    <Link to='/login'>logout</Link>
     </>
   )
 }
