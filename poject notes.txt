@@ -15,7 +15,7 @@ to do list:
 
 
 also:
-
+- remember i disabled strict mode for dnd library
 
 extras:
 -scan user's cv and format it
