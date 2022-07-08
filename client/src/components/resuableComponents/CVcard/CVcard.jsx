@@ -18,7 +18,6 @@ function CVcard({cvObj, jobID}) {
     const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
     console.log(data);
     setPreferences(data.preferences)
-
   }
 
   const onSwipe = (direction) => {

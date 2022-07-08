@@ -19,7 +19,8 @@ function RecruiterPreference({currentUser}) {
     setPreferences(data.preferences)
   }
   async function handleSavePreferences(){
-    const {data} = axios.patch(`http://localhost:5000/jobs/${job}`,{prop: 'preferences', value: preferences})
+    const {data} = await axios.patch(`http://localhost:5000/jobs/${job}`,{prop: 'preferences', value: preferences})
+    console.log(data);
   }
 
   //drag secrions
