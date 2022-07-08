@@ -18,7 +18,11 @@ function RecruiterPreference({currentUser}) {
     setJobDetails(data)
     setPreferences(data.preferences)
   }
+  async function handleSavePreferences(){
+    const {data} = axios.patch(`http://localhost:5000/jobs/${job}`,{prop: 'preferences', value: preferences})
+  }
 
+  //drag secrions
   function handleOnDragEnd(result){
     if(!result.destination) return;
     const items = Array.from(preferences)
@@ -58,9 +62,8 @@ function RecruiterPreference({currentUser}) {
   return ( 
     <>
      <div>Preference page for {jobDetails && jobDetails.company}</div>
-
        {renderPreferences()}
-
+      <button onClick={handleSavePreferences}>Save Preferences</button>
     </>
    );
 }
