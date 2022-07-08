@@ -11,7 +11,6 @@ function RecruiterProfile() {
     <>
      <div>profile pic</div>
      <div><Link to={`/myjobs${currentUser && currentUser.loggedUser._id}`}>Posted Jobs</Link></div>
-     <div><Link to={`/my_preferences${currentUser && currentUser.loggedUser._id}`}>My Preferences</Link></div>
     </>
    );
 }

@@ -33,10 +33,10 @@ function App() {
           <Route exact path='/' element={<ExplorePage/>}></Route>
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>
           <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>
-          <Route exact path='/my_preferences:id' element={<RecruiterPreference/>}></Route>
+          <Route exact path='/my_preferences:job' element={<RecruiterPreference currentUser={currentUser}/>}></Route>
           <Route exact path='/review:job' element={<ReviewCV/>}></Route>
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
-          <Route exact path='/my_matches' element={<WorkerMatches  currentUser={currentUser}/>}></Route>
+          <Route exact path='/my_matches' element={<WorkerMatches currentUser={currentUser}/>}></Route>
           <Route exact path='/cv_upload' element={<CVupload/>}></Route>
           <Route exact path='/post_job' element={<UploadJob/>}></Route>
         </Routes>

@@ -1,9 +1,16 @@
+import { useParams } from "react-router-dom";
 
 
-function RecruiterPreference() {
+function RecruiterPreference({currentUser}) {
+  const {job} = useParams()
+  console.log(job);
+
+  // const preferences = ['name','education','experience','skills','languages']
+  
+  
   return ( 
     <>
-     <div>my preference page</div>
+     <div>Preference page for {job}</div>
     </>
    );
 }

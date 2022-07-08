@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CVcard from '../../components/resuableComponents/CVcard/CVcard';
 
 function ReviewCV() {
@@ -20,7 +20,8 @@ function ReviewCV() {
   
   function renderCVlist(){
     return CVList.map(cvObj=>{
-      return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID}/>
+      return <CVcard jobID={job} 
+      cvObj={cvObj} key={cvObj.applicantID}/>
     })
   }
   function noApplicants(){
@@ -34,6 +35,7 @@ function ReviewCV() {
   return ( 
     <div>
       <p>review page</p>
+      <Link to={`/my_preferences${job}`}><div>job's preferences</div></Link>
       {CVList.length === 0?noApplicants():renderCVlist()}
     </div>
    );
