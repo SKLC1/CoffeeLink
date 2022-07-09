@@ -4,7 +4,7 @@ import { renderMatches } from "react-router-dom";
 import MatchCard from "./matchCard/matchCard";
 
 
-function WorkerMatches({currentUser}){
+function WorkerMatches({socket, currentUser}){
   const [jobMatches, setJobMatches] = useState([])
 
   useEffect(()=>{
@@ -31,7 +31,7 @@ function WorkerMatches({currentUser}){
     return jobMatches.map(match=>{
       return(
         <div key={match._id}>
-          <MatchCard match={match}/>
+          <MatchCard match={match} currentUser={currentUser} socket={socket}/>
         </div>
       )
     })

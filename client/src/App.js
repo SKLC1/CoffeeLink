@@ -15,6 +15,7 @@ import WorkerProfile from './pages/workerProfile/workerProfile.jsx';
 import { UserContext } from './UserContext.js';
 import io from 'socket.io-client'
 
+// socket connection
 const socket = io.connect("http://localhost:5000");
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
           <Route exact path='/my_preferences:job' element={<RecruiterPreference currentUser={currentUser}/>}></Route>
           <Route exact path='/review:job' element={<ReviewCV/>}></Route>
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
-          <Route exact path='/my_matches' element={<WorkerMatches currentUser={currentUser}/>}></Route>
+          <Route exact path='/my_matches' element={<WorkerMatches socket={socket} currentUser={currentUser}/>}></Route>
           <Route exact path='/cv_upload' element={<CVupload/>}></Route>
           <Route exact path='/post_job' element={<UploadJob/>}></Route>
         </Routes>
