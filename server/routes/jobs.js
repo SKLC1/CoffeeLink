@@ -57,9 +57,10 @@ jobsRouter.patch('/:id', async (req,res)=>{
   }
 })
 
-//  add/delete CV
+//  add / delete CV / add to approved 
 jobsRouter.patch('/', async (req,res)=>{
   const job = await getSpecific(req.body.idOfJob)
+  console.log(req.body);
   try {
     if(req.body.action === 'addCV'){
       const updated = await Job.findOneAndUpdate({
@@ -73,6 +74,13 @@ jobsRouter.patch('/', async (req,res)=>{
         _id: req.body.idOfJob
       },{
         $pull:{ applicants: req.body.cvObj }
+      })
+      res.status(200).json(updated)
+    } else if(req.body.action === 'addApproved'){
+      const updated = await Job.findOneAndUpdate({
+        _id: req.body.idOfJob
+      },{
+        $addToSet:{ approved: req.body.idOfApprovedApplicant }
       })
       res.status(200).json(updated)
     }

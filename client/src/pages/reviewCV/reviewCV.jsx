@@ -36,6 +36,7 @@ function ReviewCV() {
     <div>
       <p>review page</p>
       <Link to={`/my_preferences${job}`}><div>job's preferences</div></Link>
+      <div><Link to={`/hr_matches${job}`}>My Matches</Link></div>
       {CVList.length === 0?noApplicants():renderCVlist()}
     </div>
    );

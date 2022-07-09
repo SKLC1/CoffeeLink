@@ -16,7 +16,6 @@ function CVcard({cvObj, jobID}) {
   },[])
   async function getJob(){
     const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
-    console.log(data);
     setPreferences(data.preferences)
   }
 
@@ -34,6 +33,19 @@ function CVcard({cvObj, jobID}) {
     const {data} = await axios.patch(url,{
       match: jobID,
     })
+    console.log(data);
+    if(data.cv){
+      addToJobApproved()
+    }
+  }
+
+  async function addToJobApproved(){
+    const {data} = await axios.patch(`http://localhost:5000/jobs/`,{
+      idOfJob: job,
+      action: 'addApproved',
+      idOfApprovedApplicant: applicantID,
+    })
+    console.log(data);
   }
 
   function renderCVbyPreferences(cv, preferencesArray){
