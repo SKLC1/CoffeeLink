@@ -15,6 +15,7 @@ import WorkerProfile from './pages/workerProfile/workerProfile.jsx';
 import { UserContext } from './UserContext.js';
 import io from 'socket.io-client'
 import HRMatches from './pages/hrMatches/HRMatches.jsx';
+import Chat from './pages/Chat/Chat.jsx';
 
 // socket connection
 const socket = io.connect("http://localhost:5000");
@@ -45,6 +46,7 @@ function App() {
           <Route exact path='/my_matches' element={<WorkerMatches socket={socket} currentUser={currentUser}/>}></Route>
           <Route exact path='/cv_upload' element={<CVupload/>}></Route>
           <Route exact path='/post_job' element={<UploadJob/>}></Route>
+          <Route exact path='/chat:room' element={<Chat socket={socket} currentUser={currentUser}/>}></Route>
         </Routes>
       </Router>
       </UserContext.Provider>

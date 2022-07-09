@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../UserContext";
 
-function MatchCard({match, currentUser, socket}) {
+function MatchCard({match, socket}) {
   const [room, setRoom] = useState("")
-    
+  const {currentUser} = useContext(UserContext)
+  const navigate = useNavigate() 
+
+  console.log(currentUser);
   function handleJoinRoom(){
     setRoom(`${currentUser.loggedUser.first+match._id}`)
     if(currentUser){
-      socket.emit("join_room", room);
+      socket.emit("join_room", currentUser.loggedUser.first+match._id);
+      navigate(`/chat${currentUser.loggedUser.first+match._id}`)
     }
-    
   }
 
   return ( 
