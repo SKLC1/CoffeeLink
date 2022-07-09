@@ -1,0 +1,12 @@
+
+.message{
+  border-radius: 15px;
+}
+
+#you{
+  background-color: rgb(66, 225, 48);
+}
+
+#other{
+  background-color: rgb(120, 120, 229);
+}

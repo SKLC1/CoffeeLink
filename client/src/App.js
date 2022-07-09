@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import ExplorePage from './components/explorePage/explorepage.jsx';
 import Navbar from './components/navbar/navbar.jsx';

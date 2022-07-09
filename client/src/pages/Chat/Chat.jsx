@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../../UserContext";
+import './Chat.css'
 
-function Chat({socket, currentUser}) {
+function Chat({socket}) {
   const {room} = useParams()
-   const [currentMsg, setCurrentMsg] = useState("")
-   const [msgList, setMsgList] = useState([])
+  const [currentMsg, setCurrentMsg] = useState("")
+  const [msgList, setMsgList] = useState([])
+  const {currentUser} = useContext(UserContext)
   
   async function sendMsg(){
     if(currentMsg !==""){
@@ -30,7 +33,15 @@ function Chat({socket, currentUser}) {
     return msgList.map((msgContent)=>{
       return (
       <>
-       <div>{`${msgContent.author}:${msgContent.message}`}</div>
+       <div id={currentUser.loggedUser.first === msgContent.author? "you": "other"} className="message">
+        <div className="message-content">
+          <p>{msgContent.author}</p>
+          <p>{msgContent.time}</p>
+        </div>
+        <p className="message-meta">
+          {msgContent.message}
+        </p>
+       </div>
       </>
       )
     })
