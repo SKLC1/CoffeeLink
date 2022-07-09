@@ -7,8 +7,8 @@ to do list:
 ✅-create match event
 
 # to complete before SUNDAY
--create CV revirew preference page
--make CV apear according to users saved settings
+✅-create CV revirew preference page
+✅-make CV apear according to users saved settings
 -dont show cv to user twice
 -web sockets
 -web socket chats on match

@@ -13,6 +13,9 @@ import UploadJob from './pages/uploadJob/uploadJob.jsx';
 import WorkerMatches from './pages/workerMatches/workerMatches.jsx';
 import WorkerProfile from './pages/workerProfile/workerProfile.jsx';
 import { UserContext } from './UserContext.js';
+import io from 'socket.io-client'
+
+const socket = io.connect("http://localhost:5000");
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
