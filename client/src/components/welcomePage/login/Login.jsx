@@ -24,7 +24,8 @@ function Login({setCurrentUser}){
       });
       if(data.accessToken){
         setCurrentUser(data)
-        window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
+        // this should only be commented out on development
+        // window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
         if(data.loggedUser.userType === 'worker'){
           navigate('/')
         } else if (data.loggedUser.userType === 'hr'){
