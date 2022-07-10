@@ -32,10 +32,8 @@ function ExplorePage(){
     return cards.map((card)=>{
      const arrOfChecks = ['company','role_title','job_description','job_description','job_requirements','location']
      let flag = false;
-     console.log(card);
      for (const [key, value] of Object.entries(card)) {
-       if(arrOfChecks.includes(key) && value.includes(keyword)){
-        console.log(flag);
+       if(arrOfChecks.includes(key.toLowerCase()) && value.toLowerCase().includes(keyword.toLowerCase())){
          flag = true;
        } 
      }
