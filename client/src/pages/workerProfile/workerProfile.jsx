@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../../StyledComponents/Button.style";
+import { ProfilePage } from "../../StyledComponents/ProfilePage.style";
 import { UserContext } from "../../UserContext";
 
 function WorkerProfile() {
@@ -7,10 +9,20 @@ function WorkerProfile() {
 
   return ( 
     <>
-      <div>profile page</div>
-      <div>{currentUser && currentUser.loggedUser.first}</div>
-      <Link to={'/cv_upload'}><div>Upload your CV</div></Link>
-      <Link to={'/my_matches'}><div>My Matches</div></Link>
+     <ProfilePage>
+      <h3>{`${currentUser && currentUser.loggedUser.first}'s profile page`} </h3>
+      <div>PFP</div>
+      <Link to={'/cv_upload'}>
+        <Button>
+        <div>Upload your CV</div>
+        </Button>
+      </Link>
+      <Link to={'/my_matches'}>
+        <Button>
+        <div>My Matches</div>
+        </Button>
+      </Link>
+     </ProfilePage>
     </>
    );
 }
