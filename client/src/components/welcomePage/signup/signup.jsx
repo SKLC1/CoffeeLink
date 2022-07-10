@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../../StyledComponents/Button.style";
+import { Form } from "../../../StyledComponents/Form";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function SignUp() {
@@ -44,7 +46,8 @@ function SignUp() {
 
   return ( 
     <div>
-      <h1>Sign up</h1>
+      <Form>
+      <h2>Sign up</h2>
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <form onSubmit={handleSubmit}>
         <h3>First Name: <input name="first" type='text' onChange={handleChange}/></h3>
@@ -52,8 +55,9 @@ function SignUp() {
         <h3>Email: <input name="email" type='email' onChange={handleChange}/></h3>
         <h3>Password: <input name="password" type='text' onChange={handleChange}/></h3>
         { type == 'hr' && <h3>Company: <input name="company" type='text' onChange={handleChange}/></h3>}
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
+      </Form>
     </div>
    );
 }

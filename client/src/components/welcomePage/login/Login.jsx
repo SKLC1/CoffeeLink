@@ -2,6 +2,9 @@
 import axios from "axios"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "../../../StyledComponents/Button.style";
+import { Form } from "../../../StyledComponents/Form";
+import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function Login({setCurrentUser}){
@@ -35,15 +38,21 @@ function Login({setCurrentUser}){
     }
     return(
       <>
-       <div>welcome to CoffeeLink!</div>
+       <Form>
+       <h2>welcome to CoffeeLink!</h2>
        <ToggleUserType handleSetUserType={handleSetUserType}/>
-       <p>login</p>
-       <label>Email</label>
-       <input onChange={(e)=>setLoginEmail(e.target.value)}></input>
-       <label>Password</label>
-       <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
-       <button onClick={()=>handleLogin()}>Login</button>
+       <h2>login</h2>
+       <JustFlexRow>
+        <label>Email:</label>
+        <input onChange={(e)=>setLoginEmail(e.target.value)}></input>
+       </JustFlexRow>
+       <JustFlexRow>
+        <label>Password:</label>
+        <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
+       </JustFlexRow>
+       <Button onClick={()=>handleLogin()}>Login</Button>
        <p>Don't have an account? <Link to='/signup'><p>Sign Up</p></Link></p>
+       </Form>
       </>
      )
 }
