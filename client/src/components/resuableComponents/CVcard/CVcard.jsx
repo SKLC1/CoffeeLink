@@ -81,7 +81,7 @@ function CVcard({cvObj, jobID}) {
          descriptionColor={''}
         >
           <div>
-            {renderCVbyPreferences(cv, preferences)}
+            {!isImageShown && renderCVbyPreferences(cv, preferences)}
           </div>
           <div>
             {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}

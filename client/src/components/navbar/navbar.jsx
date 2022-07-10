@@ -14,7 +14,7 @@ function Navbar({currentUser}){
     <>
     <NavbarComponent backgroundColor={'#fff'}>
      <div>
-       <LogoSvgV1 width={'150px'} height={'200px'} fill={'hsl(210,99%,50%)'}/>
+       <LogoSvgV1 width={'130px'} height={'200px'} fill={'hsl(210,99%,50%)'}/>
      </div>
      {currentUser && currentUser !== null && <NavbarLinks>
        <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
