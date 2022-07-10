@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import { Card } from "../../../StyledComponents/Card.style";
-import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
+import { JustFlexRow, JustFlexRowCV } from "../../../StyledComponents/JustFlexRow";
 import RenderCVimg from "./renderCVimg";
 
 
@@ -58,10 +58,10 @@ function CVcard({cvObj, jobID}) {
     return preferencesArray.map(category=>{
        return(
         <div key={category} >
-          <JustFlexRow>
-          <h4>{category !== 'name' &&`${category}:`}</h4> 
+          <JustFlexRowCV>
+          <h4>{category !== 'name' &&`${category}: `}</h4> 
           {category === 'name'? <h2>{cv[category]}</h2>:<p>{cv[category]}</p>} 
-          </JustFlexRow>
+          </JustFlexRowCV>
         </div>
        )
     })
@@ -75,7 +75,12 @@ function CVcard({cvObj, jobID}) {
     className='swipe'
     onSwipe={onSwipe}
     preventSwipe={['up','down']}>
-        <Card backgroundColor={'#fff'}>
+        <Card 
+         backgroundColor={'#fff'}
+         nameColor={'hsl(212,99%,49%)'}
+         categoryColor={'hsl(212,99%,49%)'}
+         descriptionColor={''}
+        >
           <div>
             {renderCVbyPreferences(cv, preferences)}
           </div>
