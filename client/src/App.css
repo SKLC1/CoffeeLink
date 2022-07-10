@@ -2,10 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
   color: rgb(0, 0, 0);
   text-decoration: none;
-  text-transform: uppercase;
+}
+
+body {
+  background-color: hsl(240,25%,98%);
 }

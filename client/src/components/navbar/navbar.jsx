@@ -3,23 +3,31 @@ import { useContext } from "react"
 import { UserContext } from "../../UserContext"
 import { Link} from "react-router-dom"
 import Notifications from "../resuableComponents/Notifications/Notifications";
-import {NavbarComponent, NavbarLinks} from'../../StyledComponents/Navbar.style.jsx'
+import {NavbarComponent, NavbarLinks, NavButton} from'../../StyledComponents/Navbar.style.jsx'
 import LogoSvgV1 from "../LogosComponenets/LogoSvgV1";
 
 function Navbar({currentUser}){
 
   return(
     <>
-    <NavbarComponent backgroundColor={'hsl(341,93%,57%)'}>
+    <NavbarComponent backgroundColor={'#fff'}>
      <div>
-       <LogoSvgV1 width={'100px'} height={'100px'} fill={'#fff'}/>
+       <LogoSvgV1 width={'150px'} height={'150px'} fill={' hsl(210,99%,50%)'}/>
      </div>
      <NavbarLinks>
        <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
-        {currentUser && `logged in as ${currentUser.loggedUser.first}`}
+      <NavButton>
+        <p>My Profile</p>
+      </NavButton>
        </Link>
-       <Link to='/login'>logout</Link>
-       <Link to='/'>Explore</Link>
+       <Link to='/login'>
+        <NavButton>logout</NavButton>
+       </Link>
+       <Link to='/'>
+         <NavButton>
+         Explore
+         </NavButton>
+       </Link>
        <Notifications/>
      </NavbarLinks>
     </NavbarComponent>

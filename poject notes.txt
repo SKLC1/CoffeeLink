@@ -11,7 +11,7 @@ to do list:
 ✅-make CV apear according to users saved settings
 ✅-web sockets
 ✅-web socket chats on match
--users's explore page filtering
+✅-users's explore page filtering
 -dont show cv to user twice
 
 also:
