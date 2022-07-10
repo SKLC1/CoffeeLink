@@ -4,14 +4,14 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import { Card } from "../../../StyledComponents/Card.style";
-import { CVimage } from "../../../StyledComponents/CVimage.style";
+import RenderCVimg from "./renderCVimg";
 
 
 function CVcard({cvObj, jobID}) {
-  console.log('asdddddddddddddddddddddddddddddddddddddddddddddddddddddd');
   const {cv, applicantID} = cvObj;
   const {job} = useParams()
   const [preferences, setPreferences] = useState([])
+  const [isImageShown, setIsImageShown] = useState(true) 
   
   useEffect(()=>{
     getJob()
@@ -62,16 +62,12 @@ function CVcard({cvObj, jobID}) {
     })
   }
 
-  function renderCVimg(imgURL , link){
-    return(
-      <>
-        <a href={link}>
-         <img src={imgURL}></img>
-        </a>
-      </>
-    )
+  function toggleImage(){
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    console.log(isImageShown);
+    setIsImageShown(!isImageShown)
   }
-
+  
   return ( 
     <>
      <div className='card-container'>
@@ -79,10 +75,15 @@ function CVcard({cvObj, jobID}) {
     className='swipe'
     onSwipe={onSwipe}
     preventSwipe={['up','down']}>
-      <div className='job-card'>
-        {renderCVbyPreferences(cv, preferences)}
-        {cv.imgURL?renderCVimg(cv.imgURL, cv.imgLinkTo):null}
-      </div>
+        <Card backgroundColor={'#fff'}>
+          <div>
+            {renderCVbyPreferences(cv, preferences)}
+          </div>
+          <div>
+            {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}
+          </div>
+        </Card>
+          {/* {cv.imgURL && <button onClick={toggleImage}> UP ARROW</button>} */}
     </TinderCard>
       </div>
     </>
