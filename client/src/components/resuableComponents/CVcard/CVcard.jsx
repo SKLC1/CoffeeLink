@@ -59,8 +59,8 @@ function CVcard({cvObj, jobID}) {
        return(
         <div key={category} >
           <JustFlexRow>
-          <p>{category !== 'name' &&`${category}:`}</p> 
-          <p>{cv[category]}</p> 
+          <h4>{category !== 'name' &&`${category}:`}</h4> 
+          {category === 'name'? <h2>{cv[category]}</h2>:<p>cv[category]</p>} 
           </JustFlexRow>
         </div>
        )
