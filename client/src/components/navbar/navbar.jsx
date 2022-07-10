@@ -23,11 +23,12 @@ function Navbar({currentUser}){
        <Link to='/login'>
         <NavButton>logout</NavButton>
        </Link>
-       <Link to='/'>
+         {currentUser && currentUser.loggedUser.userType !== 'hr' &&  
+        <Link to='/'>
          <NavButton>
          Explore
          </NavButton>
-       </Link>
+       </Link>}
        <Notifications/>
      </NavbarLinks>
     </NavbarComponent>
