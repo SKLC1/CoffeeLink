@@ -5,6 +5,8 @@ import CVcard from '../../components/resuableComponents/CVcard/CVcard';
 import { BottomNav } from '../../StyledComponents/BottomNav';
 import { CardContainer } from '../../StyledComponents/CardContainer';
 import { FlexCustom } from '../../StyledComponents/flexCustom';
+import { Button } from '../../StyledComponents/Button.style.jsx'
+import { NavButton } from '../../StyledComponents/Navbar.style';
 
 function ReviewCV() {
   const [CVList, setCVList] = useState([])
@@ -36,13 +38,13 @@ function ReviewCV() {
 
   return ( 
     <div>
-      <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'80vh'}>
+      <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'90vh'}>
       <CardContainer>
         {CVList.length === 0?noApplicants():renderCVlist()}
       </CardContainer>
-      <BottomNav>
-       <Link to={`/my_preferences${job}`}><div>job's preferences</div></Link>
-       <div><Link to={`/hr_matches${job}`}>My Matches</Link></div>
+      <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
+         <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>
+         <Link to={`/hr_matches${job}`}><NavButton>Job's Matches</NavButton></Link>
       </BottomNav>
       </FlexCustom>
     </div>

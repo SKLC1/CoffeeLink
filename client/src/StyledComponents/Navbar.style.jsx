@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 export const NavbarComponent = styled.div`
   width: 100vw;
-  height: 5rem;
+  height: 10vh;
   padding: 0.3rem;
   display: flex;
   justify-content: space-between;
