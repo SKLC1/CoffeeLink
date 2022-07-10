@@ -16,6 +16,7 @@ import { UserContext } from './UserContext.js';
 import io from 'socket.io-client'
 import HRMatches from './pages/hrMatches/HRMatches.jsx';
 import Chat from './pages/Chat/Chat.jsx';
+import './App.css'
 
 // socket connection
 const socket = io.connect("http://localhost:5000");

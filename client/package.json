@@ -17,6 +17,7 @@
     "react-spinners": "^0.13.3",
     "react-tinder-card": "^1.4.5",
     "socket.io-client": "^4.5.1",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
