@@ -7,8 +7,8 @@ import { Card } from "../../../StyledComponents/Card.style";
 import { CVimage } from "../../../StyledComponents/CVimage.style";
 
 
-
 function CVcard({cvObj, jobID}) {
+  console.log('asdddddddddddddddddddddddddddddddddddddddddddddddddddddd');
   const {cv, applicantID} = cvObj;
   const {job} = useParams()
   const [preferences, setPreferences] = useState([])
@@ -89,7 +89,7 @@ function CVcard({cvObj, jobID}) {
    );
 }
 
-export default Card;
+export default CVcard;
 
 
  
