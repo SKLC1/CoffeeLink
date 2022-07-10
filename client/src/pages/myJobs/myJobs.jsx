@@ -26,7 +26,6 @@ function MyJobs() {
   function renderPostedJobs(){
     if(userJobs.length > 0){
       return userJobs.map(job=>{
-        console.log(job.job);
         return(
           <div key={job.job_description}>
             <HRjobCard job={job.job} />

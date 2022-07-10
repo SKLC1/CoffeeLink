@@ -2,6 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CVcard from '../../components/resuableComponents/CVcard/CVcard';
+import { BottomNav } from '../../StyledComponents/BottomNav';
+import { CardContainer } from '../../StyledComponents/CardContainer';
+import { FlexCustom } from '../../StyledComponents/flexCustom';
 
 function ReviewCV() {
   const [CVList, setCVList] = useState([])
@@ -33,10 +36,15 @@ function ReviewCV() {
 
   return ( 
     <div>
-      <p>review page</p>
-      <Link to={`/my_preferences${job}`}><div>job's preferences</div></Link>
-      <div><Link to={`/hr_matches${job}`}>My Matches</Link></div>
-      {CVList.length === 0?noApplicants():renderCVlist()}
+      <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'80vh'}>
+      <CardContainer>
+        {CVList.length === 0?noApplicants():renderCVlist()}
+      </CardContainer>
+      <BottomNav>
+       <Link to={`/my_preferences${job}`}><div>job's preferences</div></Link>
+       <div><Link to={`/hr_matches${job}`}>My Matches</Link></div>
+      </BottomNav>
+      </FlexCustom>
     </div>
    );
 }

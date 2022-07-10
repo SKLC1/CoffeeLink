@@ -67,7 +67,6 @@ function CVcard({cvObj, jobID}) {
     })
   }
 
-  console.log(isImageShown);
   return ( 
     <>
      <div className='card-container'>
