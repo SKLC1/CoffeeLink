@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import { Card } from "../../../StyledComponents/Card.style";
+import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import RenderCVimg from "./renderCVimg";
 
 
@@ -53,12 +54,14 @@ function CVcard({cvObj, jobID}) {
   }
 
   function renderCVbyPreferences(cv, preferencesArray){
-    console.log(cv);
     const preferences = ['name','education','experience','skills','languages']
     return preferencesArray.map(category=>{
        return(
         <div key={category} >
-          {cv[category]}
+          <JustFlexRow>
+          <p>{category !== 'name' &&`${category}:`}</p> 
+          <p>{cv[category]}</p> 
+          </JustFlexRow>
         </div>
        )
     })
