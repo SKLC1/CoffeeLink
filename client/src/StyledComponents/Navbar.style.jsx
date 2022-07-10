@@ -21,6 +21,7 @@ export const NavButton = styled.div`
   background-color: hsl(198,100%,85%);
   padding: 0.4rem;
   margin: 0.3rem;
+  max-height: 2rem;
   border-radius: 10px;
   color: hsl(210,99%,50%);
   font-weight: 500;
