@@ -2,9 +2,11 @@ import { useEffect } from "react"
 import { useContext } from "react"
 import { UserContext } from "../../UserContext"
 import { Link} from "react-router-dom"
-import Notifications from "../resuableComponents/Notifications/Notifications";
+import Notifications from "../resuableComponents/Notifications/Notifications"
 import {NavbarComponent, NavbarLinks, NavButton} from'../../StyledComponents/Navbar.style.jsx'
 import LogoSvgV1 from "../LogosComponenets/LogoSvgV1";
+import LogoSvgV2 from "../LogosComponenets/LogoSvgV1";
+import LogoSvgV3 from "../LogosComponenets/LogoSvgV3";
 
 function Navbar({currentUser}){
 
@@ -12,7 +14,7 @@ function Navbar({currentUser}){
     <>
     <NavbarComponent backgroundColor={'#fff'}>
      <div>
-       <LogoSvgV1 width={'150px'} height={'150px'} fill={' hsl(210,99%,50%)'}/>
+       <LogoSvgV1 width={'150px'} height={'200px'} fill={'hsl(210,99%,50%)'}/>
      </div>
      {currentUser && currentUser !== null && <NavbarLinks>
        <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
