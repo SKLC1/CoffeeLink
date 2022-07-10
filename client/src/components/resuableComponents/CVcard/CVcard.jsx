@@ -11,7 +11,7 @@ function CVcard({cvObj, jobID}) {
   const {cv, applicantID} = cvObj;
   const {job} = useParams()
   const [preferences, setPreferences] = useState([])
-  const [isImageShown, setIsImageShown] = useState(true) 
+  const [isImageShown, setIsImageShown] = useState(false) 
   
   useEffect(()=>{
     getJob()
@@ -24,6 +24,8 @@ function CVcard({cvObj, jobID}) {
   const onSwipe = (direction) => {
     if(direction == 'right'){
       createMatch(applicantID)
+    } else if(direction == 'down'){
+      setIsImageShown(!isImageShown)
     } else {
       console.log('left');
       // will need to save so we can not show this card to user again
@@ -62,12 +64,7 @@ function CVcard({cvObj, jobID}) {
     })
   }
 
-  function toggleImage(){
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    console.log(isImageShown);
-    setIsImageShown(!isImageShown)
-  }
-  
+  console.log(isImageShown);
   return ( 
     <>
      <div className='card-container'>
@@ -83,7 +80,6 @@ function CVcard({cvObj, jobID}) {
             {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}
           </div>
         </Card>
-          {/* {cv.imgURL && <button onClick={toggleImage}> UP ARROW</button>} */}
     </TinderCard>
       </div>
     </>
