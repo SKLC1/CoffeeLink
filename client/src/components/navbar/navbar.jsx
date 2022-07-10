@@ -14,7 +14,7 @@ function Navbar({currentUser}){
      <div>
        <LogoSvgV1 width={'150px'} height={'150px'} fill={' hsl(210,99%,50%)'}/>
      </div>
-     <NavbarLinks>
+     {currentUser && currentUser !== null && <NavbarLinks>
        <Link to={(currentUser && (currentUser.loggedUser.userType === 'worker')?'/profile':'/recruiter_profile')}>
       <NavButton>
         <p>My Profile</p>
@@ -30,7 +30,7 @@ function Navbar({currentUser}){
          </NavButton>
        </Link>}
        <Notifications/>
-     </NavbarLinks>
+     </NavbarLinks>}
     </NavbarComponent>
     </>
   )

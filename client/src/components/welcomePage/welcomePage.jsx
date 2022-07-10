@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import { Button } from "../../StyledComponents/Button.style.jsx";
+import { JustFlexColumn } from "../../StyledComponents/JustFlexRow.jsx";
 import { UserContext } from "../../UserContext.js";
 import Login from "./login/Login.jsx";
 
@@ -14,7 +16,9 @@ function WelcomePage(){
 
   function Logout(){
     return(
-      <button onClick={()=>handleLogout()}>Logout</button>
+      <JustFlexColumn>
+        <Button onClick={()=>handleLogout()}>Logout</Button>
+      </JustFlexColumn>
     )
   }
   return(

@@ -1,6 +1,8 @@
 
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../../StyledComponents/Button.style";
+import { JustFlexColumn } from "../../StyledComponents/JustFlexRow";
 import { UserContext } from "../../UserContext";
 
 
@@ -9,8 +11,13 @@ function RecruiterProfile() {
   
   return ( 
     <>
-     <div>profile pic</div>
-     <div><Link to={`/myjobs${currentUser && currentUser.loggedUser._id}`}>Posted Jobs</Link></div>
+    <JustFlexColumn>
+     <div>
+      <Button width={'10rem'}>
+       <Link to={`/myjobs${currentUser && currentUser.loggedUser._id}`}>Posted Jobs</Link>
+      </Button>
+      </div>
+    </JustFlexColumn>
     </>
    );
 }
