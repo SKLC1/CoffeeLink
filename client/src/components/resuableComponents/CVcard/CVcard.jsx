@@ -22,9 +22,9 @@ function CVcard({cvObj, jobID}) {
   }
 
   const onSwipe = (direction) => {
-    if(direction == 'right'){
+    if(direction === 'right'){
       createMatch(applicantID)
-    } else if(direction == 'down'){
+    } else if(direction === 'down'){
       setIsImageShown(!isImageShown)
     } else {
       console.log('left');
@@ -79,6 +79,7 @@ function CVcard({cvObj, jobID}) {
           <div>
             {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}
           </div>
+            {cv.imgURL && !isImageShown && <div>Swipe Down To See Project</div>}
         </Card>
     </TinderCard>
       </div>
