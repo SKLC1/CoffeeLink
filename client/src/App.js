@@ -21,6 +21,7 @@ import Chat from './pages/Chat/Chat.jsx';
 const socket = io.connect("http://localhost:5000");
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(()=>{
@@ -32,7 +33,7 @@ function App() {
     <div>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
       <Router>
-      <Navbar/>
+      <Navbar currentUser={currentUser}/>
         <Routes>
           <Route exact path='/login' element={<WelcomePage/>}></Route>
           <Route exact path='/signup' element={<SignUp/>}></Route>

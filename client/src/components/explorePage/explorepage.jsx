@@ -6,11 +6,12 @@ import RotateLoader from "react-spinners/RotateLoader";
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext.js";
-
+ 
 
 function ExplorePage(){
   const [cards,setCards] = useState([])
   const [loading,setLoading] = useState(true)
+  const [keyword,setKeyword] = useState("")
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -29,7 +30,18 @@ function ExplorePage(){
   
   function renderCards(){
     return cards.map((card)=>{
-      return <JobCard card={card} key={card._id} currentUser={currentUser}/>;
+     const arrOfChecks = ['company','role_title','job_description','job_description','job_requirements','location']
+     let flag = false;
+     console.log(card);
+     for (const [key, value] of Object.entries(card)) {
+       if(arrOfChecks.includes(key) && value.includes(keyword)){
+        console.log(flag);
+         flag = true;
+       } 
+     }
+      if(flag){
+        return <JobCard card={card} key={card._id} currentUser={currentUser}/>;
+      }
     })
   }
   function mustHaveCVMsg(){
@@ -46,6 +58,7 @@ function ExplorePage(){
     <>
       <div>
         <RotateLoader loading={loading}/>
+        <input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></input>
         {(currentUser)?renderCards():mustHaveCVMsg()}
       </div>
     </>
