@@ -57,7 +57,7 @@ function ExplorePage(){
       <div>
         <RotateLoader loading={loading}/>
         <input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></input>
-        {(currentUser)?renderCards():mustHaveCVMsg()}
+        {(currentUser && currentUser.loggedUser.cv)?renderCards():mustHaveCVMsg()}
       </div>
     </>
   )

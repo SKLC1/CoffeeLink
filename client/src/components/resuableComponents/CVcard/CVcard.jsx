@@ -3,7 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TinderCard from "react-tinder-card";
-import './CVcard.css'
+import { Card } from "../../../StyledComponents/Card.style";
+import { CVimage } from "../../../StyledComponents/CVimage.style";
+
 
 
 function CVcard({cvObj, jobID}) {
@@ -53,9 +55,21 @@ function CVcard({cvObj, jobID}) {
     const preferences = ['name','education','experience','skills','languages']
     return preferencesArray.map(category=>{
        return(
-        <div key={category} >{cv[category]}</div>
+        <div key={category} >
+          {cv[category]}
+        </div>
        )
     })
+  }
+
+  function renderCVimg(imgURL , link){
+    return(
+      <>
+        <a href={link}>
+         <img src={imgURL}></img>
+        </a>
+      </>
+    )
   }
 
   return ( 
@@ -66,7 +80,8 @@ function CVcard({cvObj, jobID}) {
     onSwipe={onSwipe}
     preventSwipe={['up','down']}>
       <div className='job-card'>
-       {renderCVbyPreferences(cv, preferences)}
+        {renderCVbyPreferences(cv, preferences)}
+        {cv.imgURL?renderCVimg(cv.imgURL, cv.imgLinkTo):null}
       </div>
     </TinderCard>
       </div>
@@ -74,19 +89,7 @@ function CVcard({cvObj, jobID}) {
    );
 }
 
-export default CVcard;
+export default Card;
 
 
-
-// <div className='card-container'>
-// <TinderCard 
-// className='swipe'
-// onSwipe={onSwipe}
-// preventSwipe={['up','down']}>
-//   <div className='job-card'>
-//    <div>{cv.name}</div>
-//    <div>{cv.education}</div>
-//    <div>{cv.experience}</div>
-//   </div>
-// </TinderCard>
-//   </div>
+ 
