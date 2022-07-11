@@ -30,7 +30,9 @@ function Chat({socket}) {
 
     socket.on("output-messages",(data)=>{
       console.log(data);
-      setMsgList((prev)=>[...prev, data])
+      data.map((msg)=>{
+        setMsgList((prev)=>[...prev, msg])
+      })
     })
   },[socket])
 
@@ -42,7 +44,7 @@ function Chat({socket}) {
     console.log(msgList);
     return msgList.map((msgContent)=>{
       return (
-      <>
+      <div>
        <div id={currentUser.loggedUser.first === msgContent.author? "you": "other"} className="message">
         <div className="message-content">
           <p>{msgContent.author}</p>
@@ -52,7 +54,7 @@ function Chat({socket}) {
           {msgContent.message}
         </p>
        </div>
-      </>
+      </div>
       )
     })
   }
