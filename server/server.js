@@ -8,6 +8,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors'
 import { Server } from 'socket.io'
 import http from 'http'
+//msg
+import { Msg } from './models/messages.js'
+export const messagesRouter = express.Router()
+
 
 dotenv.config()
 
@@ -36,13 +40,25 @@ const io = new Server(server,{
 
 io.on("connection", (socket)=>{
   console.log(`user connected: ${socket.id}`);
-
+  
   socket.on("join_room",(data)=>{
     socket.join(data);
     console.log(`user with id ${socket.id} joined room ${data}`);
+    //get room's chat
+    Msg.find({room: data}).then((result)=>{
+      socket.emit('output-messages', result)
+    });
   })
   socket.on("send_message",(data)=>{
-    socket.to(data.room).emit("receive_message",data);
+    const message = new Msg({
+      room: data.room,
+      author: data.author,
+      message: data.message,
+      time: data.time,
+    })
+    message.save().then(()=>{
+      socket.to(data.room).emit("receive_message",data);
+    })
   })
   socket.on("disconnect", ()=>{
     console.log(`user disconnected: ${socket.id}`)

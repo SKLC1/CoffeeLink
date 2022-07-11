@@ -27,9 +27,19 @@ function Chat({socket}) {
       console.log(data);
       setMsgList((prev)=>[...prev, data])
     })
+
+    socket.on("output-messages",(data)=>{
+      console.log(data);
+      setMsgList((prev)=>[...prev, data])
+    })
   },[socket])
 
+  useEffect(()=>{
+    renderMsgList()
+  },[msgList])
+
   function renderMsgList(){
+    console.log(msgList);
     return msgList.map((msgContent)=>{
       return (
       <>
