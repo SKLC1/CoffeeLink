@@ -12,7 +12,8 @@ to do list:
 ✅-web sockets
 ✅-web socket chats on match
 ✅-users's explore page filtering
--save messages to db
+✅-save messages to db
+-fix preferences bug
 -dont show cv to user twice
 
 also:

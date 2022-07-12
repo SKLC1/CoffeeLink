@@ -51,13 +51,22 @@ function ExplorePage(){
       </div>
     )
   }
+
+  async function isCVinCurrentUser(id){
+    const {data} = await axios.get(`http://localhost:5000/users/${id}`)
+    if(data.cv){
+      return true
+    } else {
+      return false
+    }
+  }
   
   return(
     <>
       <div>
         <RotateLoader loading={loading}/>
         <input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></input>
-        {(currentUser && currentUser.loggedUser.cv)?renderCards():mustHaveCVMsg()}
+        {isCVinCurrentUser(currentUser && currentUser.loggedUser._id)?renderCards():mustHaveCVMsg()}
       </div>
     </>
   )

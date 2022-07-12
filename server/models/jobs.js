@@ -9,7 +9,7 @@ const jobScheme = new mongoose.Schema({
   posted_by: {type: String},
   applicants: [Object],
   approved: [Object],
-  preferences,
+  preferences: [String],
 })
 // ['name','education','experience','skills','languages']
 
