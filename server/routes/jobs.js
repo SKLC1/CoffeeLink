@@ -35,6 +35,7 @@ jobsRouter.post('/', async (req,res)=>{
     job_time,
     job_type,
     posted_by,
+    preferences,
   })
   await newJob.save()
   res.status(201).json(newJob)

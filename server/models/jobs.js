@@ -9,7 +9,8 @@ const jobScheme = new mongoose.Schema({
   posted_by: {type: String},
   applicants: [Object],
   approved: [Object],
-  preferences: ['name','education','experience','skills','languages'],
+  preferences,
 })
+// ['name','education','experience','skills','languages']
 
 export const Job = mongoose.model('jobs', jobScheme)

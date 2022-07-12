@@ -29,7 +29,7 @@ function SignUp() {
     e.preventDefault()
     try {
       const {first,last,email,password,userType,company} = signupInfo;
-      const {data} = await axios.post(`http://localhost:5000/${type == 'hr'?'hr_users':'users'}`,{
+      const {data} = await axios.post(`https://coffee--link.herokuapp.com/${type == 'hr'?'hr_users':'users'}`,{
         first,last,email,password,company
       })
       if(!data.message){

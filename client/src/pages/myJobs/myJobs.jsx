@@ -17,7 +17,7 @@ function MyJobs() {
   },[])
 
   async function getUpdatedCurrentUser(){
-    const getOneUrl = `http://localhost:5000/hr_users/${id}`;
+    const getOneUrl = `https://coffee--link.herokuapp.com/hr_users/${id}`;
     const {data} = await axios.get(getOneUrl);
     console.log(data);
     setUserJobs(data.posted_jobs)

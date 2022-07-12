@@ -14,7 +14,8 @@ function UploadJob() {
     job_requirements:'',
     job_type:'',
     job_time:'',
-    posted_by: currentUser.loggedUser._id
+    posted_by: currentUser.loggedUser._id,
+    preferences: ['name','education','experience','skills','languages'],
   })
 
   function handleChange(e){
@@ -25,16 +26,17 @@ function UploadJob() {
   }
   async function handleSubmit(e){
     e.preventDefault();
+    console.log(jobObj);
     const curUserId = currentUser.loggedUser._id
     console.log(curUserId);
-    const {data} = await axios.post('http://localhost:5000/jobs',{jobObj})
+    const {data} = await axios.post('https://coffee--link.herokuapp.com/jobs',{jobObj})
     console.log(data);
     //add job to hr
     addJobToHR(curUserId,data)
   }
   
   async function addJobToHR(userID,job){
-    const {data} = await axios.patch(`http://localhost:5000/hr_users/addJob/${userID}`,{job})
+    const {data} = await axios.patch(`https://coffee--link.herokuapp.com/hr_users/addJob/${userID}`,{job})
     console.log(data);
   }
 

@@ -19,12 +19,16 @@ function Login({setCurrentUser}){
     } 
   
     async function handleLogin(){
-      const loginURL = type === 'hr'?'http://localhost:5000/hr_users/login':'http://localhost:5000/users/login';
+      const loginURL = (type === 'hr')?
+      'http://localhost:5000/hr_users/login':
+      'http://localhost:5000/users/login';
+
       const {data} = await axios.post(loginURL,{
         userType: type,
         email: loginEmail,
         password: loginPassword,
       });
+      console.log(data);
       if(data.accessToken){
         setCurrentUser(data)
         // this should only be commented out on development
@@ -34,7 +38,9 @@ function Login({setCurrentUser}){
         } else if (data.loggedUser.userType === 'hr'){
           navigate('/recruiter_profile')
         }
-      } 
+      } else {
+        console.log('something went wrong');
+      }
     }
     return(
       <>
