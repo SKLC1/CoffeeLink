@@ -24,6 +24,7 @@ db.on('error', (error)=> console.log(error))
 db.once('open', ()=> console.log('Connected to db'))
 
 app.use(bodyParser.json())
+
 app.use(cors())
 app.use('/users', usersRouter)
 app.use('/hr_users', hrUsersRouter)
