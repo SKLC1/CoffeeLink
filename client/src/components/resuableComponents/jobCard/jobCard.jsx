@@ -1,6 +1,9 @@
 import axios from 'axios';
 import TinderCard from 'react-tinder-card'
+import { JustFlexRowCV } from '../../../StyledComponents/JustFlexRow';
 import './jobCard.css'
+
+// const URL = process.env?"heroku":"local";
 
 function JobCard({card, currentUser}){
   
@@ -26,6 +29,19 @@ function JobCard({card, currentUser}){
     });
     console.log(data);
   }
+  function renderJobCard(){
+    console.log(card);
+    return card.map(category=>{
+      return(
+       <div key={category} >
+         <JustFlexRowCV>
+         <h4>{category !== 'name' &&`${category}: `}</h4> 
+         {category === 'name'? <h2>{card[category]}</h2>:<p>{card[category]}</p>} 
+         </JustFlexRowCV>
+       </div>
+      )
+   })
+  }
 
   return(
     <>
@@ -35,9 +51,7 @@ function JobCard({card, currentUser}){
     onSwipe={onSwipe}
     preventSwipe={['up','down']}>
       <div className='job-card'>
-       <div>{card.company}</div>
-       <div>{card.role_title}</div>
-       <div>{card.job_description}</div>
+       {renderJobCard}
       </div>
     </TinderCard>
       </div>

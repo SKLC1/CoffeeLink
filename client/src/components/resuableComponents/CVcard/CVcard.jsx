@@ -54,7 +54,7 @@ function CVcard({cvObj, jobID}) {
   }
 
   function renderCVbyPreferences(cv, preferencesArray){
-    const preferences = ['name','education','experience','skills','languages']
+    // const preferences = ['name','education','experience','skills','languages']
     return preferencesArray.map(category=>{
        return(
         <div key={category} >
