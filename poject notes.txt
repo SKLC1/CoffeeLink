@@ -13,6 +13,7 @@ to do list:
 ✅-web socket chats on match
 ✅-users's explore page filtering
 ✅-save messages to db
+-fix auth token
 -fix preferences bug
 -dont show cv to user twice
 

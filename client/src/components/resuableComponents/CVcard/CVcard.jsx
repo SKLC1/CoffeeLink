@@ -9,10 +9,13 @@ import RenderCVimg from "./renderCVimg";
 
 
 function CVcard({cvObj, jobID}) {
-  const {cv, applicantID} = cvObj;
   const {job} = useParams()
   const [preferences, setPreferences] = useState([])
-  const [isImageShown, setIsImageShown] = useState(false) 
+  const [isImageShown, setIsImageShown] = useState(false)
+
+  const {cv, applicantID} = cvObj;
+  console.log(cvObj);
+  console.log(cv);
   
   useEffect(()=>{
     getJob()
@@ -83,7 +86,7 @@ function CVcard({cvObj, jobID}) {
           <div>
             {!isImageShown && renderCVbyPreferences(cv, preferences)}
           </div>
-          <div>
+          <div> 
             {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}
           </div>
             {cv.imgURL && !isImageShown && <div>Swipe Down To See Project</div>}

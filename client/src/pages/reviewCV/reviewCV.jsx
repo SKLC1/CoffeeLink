@@ -15,7 +15,7 @@ function ReviewCV() {
   useEffect(()=>{
     getCVlist()
   },[])
-
+  
   async function getCVlist(){
     const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
     const cvList = data.applicants;
