@@ -33,7 +33,7 @@ function App() {
   return (
     <div>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
-      <Router>
+      <Router basename='https://coffee--link.herokuapp.com/'>
       <Navbar currentUser={currentUser}/>
         <Routes>
           <Route exact path='/login' element={<WelcomePage/>}></Route>
