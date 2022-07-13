@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { Item } from "../../StyledComponents/Item.style";
+import { Title } from "../../StyledComponents/Title.style";
+import { Button } from "../../StyledComponents/Button.style";
+import { JustFlexRow } from "../../StyledComponents/JustFlexRow";
 
 function RecruiterPreference({currentUser}) {
   const {job} = useParams()
@@ -44,9 +48,11 @@ function RecruiterPreference({currentUser}) {
                 return(
                   <Draggable key={category} draggableId={category} index={idx}>
                   {(provided)=>(
-                    <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                    <Item {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                     <h4>
                      {category}
-                    </li>
+                     </h4>
+                    </Item>
                   )}  
                 </Draggable>
                 ) 
@@ -62,9 +68,13 @@ function RecruiterPreference({currentUser}) {
 
   return ( 
     <>
-     <div>Preference page for {jobDetails && jobDetails.company}</div>
+     <Title><h5>Set your Viewing Order For</h5>
+       <h4>{jobDetails && jobDetails.company} {jobDetails && jobDetails.role_title}</h4>
+     </Title>
        {renderPreferences()}
-      <button onClick={handleSavePreferences}>Save Preferences</button>
+       <JustFlexRow>
+        <Button onClick={handleSavePreferences}>Save Preferences</Button>
+       </JustFlexRow>
     </>
    );
 }

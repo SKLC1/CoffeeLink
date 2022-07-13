@@ -27,7 +27,9 @@ function Notifications() {
   }
   return ( 
     <>
-    <Link to={currentUser && currentUser.loggedUser.userType === 'worker'?'/my_matches':'my_jobs'}>
+    <Link to={currentUser && currentUser.loggedUser.userType === 'worker'
+    ?'/my_matches'
+    :`/myJobs${currentUser && currentUser.loggedUser._id}`}>
       <NavButton>
           {renderNotificationCount()}
       <NotificationsIcon/>

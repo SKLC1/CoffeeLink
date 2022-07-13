@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
+import { Item } from '../../StyledComponents/Item.style';
 import './HRjobCard.css'
 
 function HRjobCard({job}) {
   return ( 
     <>
     <Link to={`/review${job._id}`}>
-     <div className='hr-job-card'>
-       <div>{job.company}</div>
-       <div>{job.role_title}</div>
-     </div>
+     <Item>
+       <h2>{job.company}</h2>
+       <h4>{job.role_title}</h4>
+     </Item>
     </Link>
     </>
    );
