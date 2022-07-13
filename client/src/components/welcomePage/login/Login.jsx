@@ -64,7 +64,7 @@ function Login({setCurrentUser}){
        <JustFlexRow>
         <Button onClick={()=>handleLogin()}>Login</Button>
        </JustFlexRow>
-       <p>Don't have an account? <Link to='/signup'><p>Sign Up</p></Link></p>
+       <p>Don't have an account? <Link to='/signup'><h4>Sign Up</h4></Link></p>
        </Form>
       </>
      )

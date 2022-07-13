@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
 import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
+import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function SignUp() {
@@ -63,7 +64,9 @@ function SignUp() {
         <h4>Password: </h4><input name="password" type='text' onChange={handleChange}/>
         </InputAndLabel>
         { type == 'hr' && <h3>Company: <input name="company" type='text' onChange={handleChange}/></h3>}
+        <JustFlexRow>
         <Button type="submit">Sign Up</Button>
+         </JustFlexRow>
       </form>
       </Form>
     </div>
