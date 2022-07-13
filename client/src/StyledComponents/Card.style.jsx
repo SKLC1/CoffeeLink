@@ -8,6 +8,7 @@ export const Card = styled.div`
   background-color: ${(props)=> props.backgroundColor };;
   border-radius: 15px;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+  background-color: #fff;
   //display
   display: flex;
   flex-direction: column;
