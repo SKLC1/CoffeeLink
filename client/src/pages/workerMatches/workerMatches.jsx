@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { renderMatches } from "react-router-dom";
+import { JustFlexRow } from "../../StyledComponents/JustFlexRow";
+import { Title } from "../../StyledComponents/Title.style";
 import { UserContext } from "../../UserContext";
 import MatchCard from "./matchCard/matchCard";
 
@@ -42,7 +44,9 @@ function WorkerMatches({socket, currentUser}){
   
   return ( 
     <>
-      <div>matches page</div>
+      <JustFlexRow>
+       <Title><h4>My Matches</h4></Title>
+      </JustFlexRow>
       {renderMatches()}
     </>
   );

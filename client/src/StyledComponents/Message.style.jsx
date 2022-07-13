@@ -8,4 +8,13 @@ export const Message = styled.div`
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
   border-radius: 20px;
   background-color: ${(props)=>props.backgroundColor};
+
+  & div > span > p{
+    color: #cfd0d6;
+    font-size: 0.7rem;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: ${(props)=>props.side};
 `

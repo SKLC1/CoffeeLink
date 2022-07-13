@@ -49,12 +49,19 @@ function Chat({socket}) {
       return (
       <Message 
         key={msgContent.time + msgContent.message} 
-        backgroundColor={msgContent.author? "#09f878": "hsl(210,99%,50%);"}>
+        backgroundColor={msgContent.author  === currentUser.loggedUser.first ?
+         "#7d7e80":
+         "hsl(210,99%,50%)"}
+        side={msgContent.author  === currentUser.loggedUser.first ?
+          "baseline":
+          "end"}
+         >
+        
        <div className="message">
-        <div className="message-content">
+        <span className="message-content">
           <p>{msgContent.author}</p>
           <p>{msgContent.time}</p>
-        </div>
+        </span>
         <p className="message-meta">
           {msgContent.message}
         </p>
@@ -67,9 +74,9 @@ function Chat({socket}) {
   return ( 
     <>
     <Form>
-      <h1>Chat</h1>
+      <h2>Chat</h2>
       <div className="chat-header">
-        <p>Live Chat</p>
+        <h4>Live Chat</h4>
       </div>
       <div className="chat-body">
         <div className="chat-window">

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../../StyledComponents/Button.style";
 import { Item } from "../../../StyledComponents/Item.style";
 import { UserContext } from "../../../UserContext";
 
@@ -21,7 +22,7 @@ function MatchCard({match, socket}) {
     <>
       <Item>
         <h4>You have a match with {match.company}'s position for {match.role_title}</h4>
-        <button onClick={handleJoinRoom}>Schedule meeting</button>
+        <Button onClick={handleJoinRoom}>Schedule meeting</Button>
       </Item>
     </>
    );
