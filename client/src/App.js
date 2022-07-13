@@ -23,7 +23,7 @@ const socket = io.connect("http://localhost:5000");
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
-  const [notifications, setNotifications] = useState(0)
+  const [notifications, setNotifications] = useState([])
 
   useEffect(()=>{
     const data = window.localStorage.getItem('CURRENT_USER')

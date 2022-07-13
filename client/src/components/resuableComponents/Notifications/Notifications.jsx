@@ -10,14 +10,26 @@ import './Notifications.css'
 
 function Notifications() {
   const {notifications} = useContext(UserContext)
+
+  useEffect(()=>{
+      renderNotificationCount()
+  },[notifications])
   
+  function renderNotificationCount(){
+    if(notifications.length > 0 && notifications.length < 10){
+      return <div className="notifications-counter">{notifications.length}</div>
+    } else if(notifications.length > 10){
+      return <div className="notifications-counter">+9</div>
+    } else  if(notifications.length <= 0){
+      return null
+    }
+    console.log(notifications.length);
+  }
   return ( 
     <>
     <Link to='/my_matches'>
       <NavButton>
-        <div className="notifications-counter">
-         {notifications}
-        </div>
+          {renderNotificationCount()}
       <NotificationsIcon/>
       </NavButton>
     </Link>

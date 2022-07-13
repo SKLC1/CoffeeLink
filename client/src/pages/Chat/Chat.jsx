@@ -7,7 +7,7 @@ function Chat({socket}) {
   const {room} = useParams()
   const [currentMsg, setCurrentMsg] = useState("")
   const [msgList, setMsgList] = useState([])
-  const {currentUser} = useContext(UserContext)
+  const {currentUser, notifications, setNotifications} = useContext(UserContext)
   
   async function sendMsg(){
     if(currentMsg !==""){
@@ -26,6 +26,7 @@ function Chat({socket}) {
     socket.on("receive_message",(data)=>{
       console.log(data);
       setMsgList((prev)=>[...prev, data])
+      setNotifications((prev)=>[...prev, data ])
     })
 
     socket.on("output-messages",(data)=>{
@@ -41,7 +42,6 @@ function Chat({socket}) {
   },[msgList])
 
   function renderMsgList(){
-    console.log(msgList);
     return msgList.map((msgContent)=>{
       return (
       <div>
