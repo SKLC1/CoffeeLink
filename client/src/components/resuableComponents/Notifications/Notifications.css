@@ -1,0 +1,14 @@
+
+.notifications-counter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+
+  background-color: red;
+  border-radius: 50px;
+  width: 0.7rem;
+  height: 0.7rem;
+  color: #fff;
+  font-size: 0.6rem;
+}

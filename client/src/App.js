@@ -22,8 +22,8 @@ import './App.css'
 const socket = io.connect("http://localhost:5000");
 
 function App() {
-
   const [currentUser, setCurrentUser] = useState(null)
+  const [notifications, setNotifications] = useState(0)
 
   useEffect(()=>{
     const data = window.localStorage.getItem('CURRENT_USER')
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <UserContext.Provider value={{currentUser, setCurrentUser}}>
+      <UserContext.Provider value={{currentUser, setCurrentUser, notifications, setNotifications}}>
       <Router>
         {/*  basename='https://coffee--link.herokuapp.com/' */}
       <Navbar currentUser={currentUser}/>
