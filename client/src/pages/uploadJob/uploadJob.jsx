@@ -12,8 +12,8 @@ function UploadJob() {
     job_description:'',
     location:'',
     job_requirements:'',
-    job_type:'',
-    job_time:'',
+    job_type:'Remote',
+    job_time:'full_time',
     posted_by: currentUser.loggedUser._id,
   })
 
@@ -47,7 +47,7 @@ function UploadJob() {
         <h3>Description: <input name="job_description" type='text' onChange={handleChange}/></h3>
         <h3>Requirements: <input name="job_requirements" type='text' onChange={handleChange}/></h3>
         <h3>Location: <input name="location" type='text' onChange={handleChange}/></h3>
-        <h3>Type: <select name="job_type" onChange={handleChange}>
+        <h3>Type: <select name="job_type" placeholder="select" onChange={handleChange}>
                     <option value="Remote">Remote</option>
                     <option value="Hybrid">Hybrid</option>
                     <option value="Regular">Office</option>

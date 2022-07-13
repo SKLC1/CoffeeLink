@@ -9,7 +9,7 @@ import { NavButton } from "../../../StyledComponents/Navbar.style";
 import './Notifications.css'
 
 function Notifications() {
-  const {notifications} = useContext(UserContext)
+  const {currentUser ,notifications} = useContext(UserContext)
 
   useEffect(()=>{
       renderNotificationCount()
@@ -27,7 +27,7 @@ function Notifications() {
   }
   return ( 
     <>
-    <Link to='/my_matches'>
+    <Link to={currentUser && currentUser.loggedUser.userType === 'worker'?'/my_matches':'my_jobs'}>
       <NavButton>
           {renderNotificationCount()}
       <NotificationsIcon/>
