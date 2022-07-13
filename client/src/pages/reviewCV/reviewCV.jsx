@@ -7,6 +7,7 @@ import { CardContainer } from '../../StyledComponents/CardContainer';
 import { FlexCustom } from '../../StyledComponents/flexCustom';
 import { Button } from '../../StyledComponents/Button.style.jsx'
 import { NavButton } from '../../StyledComponents/Navbar.style';
+import { Title } from '../../StyledComponents/Title.style';
 
 function ReviewCV() {
   const [CVList, setCVList] = useState([])
@@ -28,19 +29,13 @@ function ReviewCV() {
       return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID}/>
     })
   }
-  function noApplicants(){
-    return(
-      <>
-      <div>no applicants yet</div>
-      </>
-    )
-  }
+
 
   return ( 
     <div>
       <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'90vh'}>
       <CardContainer>
-        {CVList.length === 0?noApplicants():renderCVlist()}
+        {CVList.length === 0 ? <Title>no applicants yet</Title> : renderCVlist()}
       </CardContainer>
       <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
          <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>

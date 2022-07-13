@@ -25,5 +25,8 @@ export const NavButton = styled.div`
   border-radius: 10px;
   color: hsl(210,99%,50%);
   font-weight: 500;
+  @media (max-width: 450px) {
+    font-size: 0.5rem;
+  }
   /* border: solid 2px hsl(210,99%,50%); */
 `
