@@ -61,7 +61,9 @@ function Login({setCurrentUser}){
         <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
         </InputAndLabel>
        </JustFlexRow>
-       <Button onClick={()=>handleLogin()}>Login</Button>
+       <JustFlexRow>
+        <Button onClick={()=>handleLogin()}>Login</Button>
+       </JustFlexRow>
        <p>Don't have an account? <Link to='/signup'><p>Sign Up</p></Link></p>
        </Form>
       </>

@@ -4,7 +4,7 @@ export const InputAndLabel = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 16rem;
+  width: 18rem;
   
   & > * {
     font-weight: 500;

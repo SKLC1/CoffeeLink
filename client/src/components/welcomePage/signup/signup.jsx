@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
+import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function SignUp() {
@@ -49,10 +50,18 @@ function SignUp() {
       <h2>Sign up</h2>
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <form onSubmit={handleSubmit}>
-        <h3>First Name: <input name="first" type='text' onChange={handleChange}/></h3>
-        <h3>Last Name: <input name="last" type='text' onChange={handleChange}/></h3>
-        <h3>Email: <input name="email" type='email' onChange={handleChange}/></h3>
-        <h3>Password: <input name="password" type='text' onChange={handleChange}/></h3>
+        <InputAndLabel>
+        <h4>First Name: </h4><input name="first" type='text' onChange={handleChange}/>
+        </InputAndLabel>
+        <InputAndLabel>
+        <h4>Last Name: </h4><input name="last" type='text' onChange={handleChange}/>
+        </InputAndLabel>
+        <InputAndLabel>
+        <h4>Email:</h4> <input name="email" type='email' onChange={handleChange}/>
+        </InputAndLabel>
+        <InputAndLabel>
+        <h4>Password: </h4><input name="password" type='text' onChange={handleChange}/>
+        </InputAndLabel>
         { type == 'hr' && <h3>Company: <input name="company" type='text' onChange={handleChange}/></h3>}
         <Button type="submit">Sign Up</Button>
       </form>
