@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
+import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
 import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
@@ -49,12 +50,16 @@ function Login({setCurrentUser}){
        <ToggleUserType handleSetUserType={handleSetUserType}/>
        <h2>login</h2>
        <JustFlexRow>
+        <InputAndLabel>
         <label>Email:</label>
         <input onChange={(e)=>setLoginEmail(e.target.value)}></input>
+        </InputAndLabel>
        </JustFlexRow>
        <JustFlexRow>
+        <InputAndLabel>
         <label>Password:</label>
         <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
+        </InputAndLabel>
        </JustFlexRow>
        <Button onClick={()=>handleLogin()}>Login</Button>
        <p>Don't have an account? <Link to='/signup'><p>Sign Up</p></Link></p>

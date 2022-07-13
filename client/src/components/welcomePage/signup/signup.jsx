@@ -35,7 +35,6 @@ function SignUp() {
       if(!data.message){
         navigate('/login')
       } 
-      
     } catch (error) {
       if(error){
         console.log('Sorry, This email Already Exists');
