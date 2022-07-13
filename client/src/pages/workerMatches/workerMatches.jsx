@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { renderMatches } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 import MatchCard from "./matchCard/matchCard";
 
 
 function WorkerMatches({socket, currentUser}){
   const [jobMatches, setJobMatches] = useState([])
+  const {setNotifications} = useContext(UserContext)
 
   useEffect(()=>{
     getAllMatches()
+    setNotifications([])
   },[])
   
   async function getAllMatches(){
