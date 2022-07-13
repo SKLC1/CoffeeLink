@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { Button } from "../../../StyledComponents/Button.style";
+import { Item } from "../../../StyledComponents/Item.style";
+import { JustFlexColumn } from "../../../StyledComponents/JustFlexRow";
 import Chat from "../../Chat/Chat";
 
 
@@ -17,10 +20,12 @@ function HRMatchCard({applicant, socket, currentUser}) {
   } 
   
   return ( 
-    <>
-    <div>{`${applicant.first} ${applicant.last}`}</div>
-    <button onClick={handleJoinRoom}>Schedule meeting</button>
-    </>
+    <Item>
+      <JustFlexColumn>
+        <h2>{`${applicant.first} ${applicant.last}`}</h2>
+        <Button onClick={handleJoinRoom}>Schedule meeting</Button>
+      </JustFlexColumn>
+    </Item>
    );
 }
 

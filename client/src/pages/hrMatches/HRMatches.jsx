@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { renderMatches, useParams } from "react-router-dom";
+import { Title } from "../../StyledComponents/Title.style";
 import HRMatchCard from "./HRMatchCard/HRMatchCard";
 
 
@@ -35,7 +36,7 @@ function HRMatches({socket, currentUser}) {
 
   return ( 
     <>
-     <div>The matches for this Job are:</div>
+     <Title>The matches for this Job are:</Title>
       {renderMatches()}
     </>
    );

@@ -48,7 +48,6 @@ function MyJobs() {
   return ( 
     <>
     <JustFlexColumn>
-     <div>{renderPostedJobs()}</div>
      <Link to='/post_job'>
      <Item>
       <h2>
@@ -58,6 +57,8 @@ function MyJobs() {
       {/* <img src="https://static.vecteezy.com/system/resources/previews/000/582/563/non_2x/button-plus-icon-vector.jpg"></img> */}
      </Item>
       </Link>
+      <h2>OR</h2>
+     <div>{renderPostedJobs()}</div>
     </JustFlexColumn>
     </>
    );
