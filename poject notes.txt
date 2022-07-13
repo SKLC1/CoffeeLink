@@ -16,6 +16,7 @@ to do list:
 ✅-notifcations
 -fix auth token
 -fix preferences bug
+-fix recruier/hr select
 -dont show cv to user twice
 
 style tasks:

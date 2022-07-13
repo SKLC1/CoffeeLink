@@ -6,6 +6,8 @@ export const Item = styled.div`
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
   border-radius: 20px;
   background-color: #fff;
+  max-width: 40rem;
+  min-width: 18rem;
   & > h2 {
     color: hsl(210,99%,50%);
   }

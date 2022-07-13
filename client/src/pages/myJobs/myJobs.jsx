@@ -6,6 +6,7 @@ import { UserContext } from "../../UserContext";
 import { Link, useParams } from 'react-router-dom';
 import { ListItem } from "@mui/material";
 import { Item } from "../../StyledComponents/Item.style";
+import { JustFlexColumn } from "../../StyledComponents/JustFlexRow";
 
 
 
@@ -46,15 +47,18 @@ function MyJobs() {
   
   return ( 
     <>
+    <JustFlexColumn>
      <div>{renderPostedJobs()}</div>
      <Link to='/post_job'>
      <Item>
       <h2>
       Post Job
       </h2>
-      <img src="https://static.vecteezy.com/system/resources/previews/000/582/563/non_2x/button-plus-icon-vector.jpg"></img>
+      <h4>Post a position for everyone to apply</h4>
+      {/* <img src="https://static.vecteezy.com/system/resources/previews/000/582/563/non_2x/button-plus-icon-vector.jpg"></img> */}
      </Item>
       </Link>
+    </JustFlexColumn>
     </>
    );
 }

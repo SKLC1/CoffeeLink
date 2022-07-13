@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Form } from "../../StyledComponents/Form.style";
+import { Item } from "../../StyledComponents/Item.style";
+import { Message } from "../../StyledComponents/Message.style";
 import { UserContext } from "../../UserContext";
 import './Chat.css'
 
@@ -44,8 +47,10 @@ function Chat({socket}) {
   function renderMsgList(){
     return msgList.map((msgContent)=>{
       return (
-      <div>
-       <div id={currentUser.loggedUser.first === msgContent.author? "you": "other"} className="message">
+      <Message 
+        key={msgContent.time + msgContent.message} 
+        backgroundColor={msgContent.author? "#09f878": "hsl(210,99%,50%);"}>
+       <div className="message">
         <div className="message-content">
           <p>{msgContent.author}</p>
           <p>{msgContent.time}</p>
@@ -54,24 +59,28 @@ function Chat({socket}) {
           {msgContent.message}
         </p>
        </div>
-      </div>
+      </Message>
       )
     })
   }
 
   return ( 
     <>
+    <Form>
       <h1>Chat</h1>
       <div className="chat-header">
         <p>Live Chat</p>
       </div>
       <div className="chat-body">
+        <div className="chat-window">
         {renderMsgList()}
+        </div>
       </div>
       <div className="chat-footer">
         <input type='text' onChange={(e)=>{setCurrentMsg(e.target.value)}}/>
         <button onClick={sendMsg}>Send</button>
       </div>
+    </Form>
     </>
    );
 }
