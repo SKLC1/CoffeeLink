@@ -41,5 +41,8 @@ justify-content: center;
   font-weight: 500;
   border: solid 2px hsl(210,99%,50%);
 }
-
+& > div > img{
+  width: 100%;
+  height: auto;
+} 
 `
