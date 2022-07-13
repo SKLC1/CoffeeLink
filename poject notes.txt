@@ -13,9 +13,14 @@ to do list:
 ✅-web socket chats on match
 ✅-users's explore page filtering
 ✅-save messages to db
+✅-notifcations
 -fix auth token
 -fix preferences bug
 -dont show cv to user twice
+
+style tasks:
+-chat section
+-matches section
 
 also:
 - remember i disabled strict mode for dnd library
