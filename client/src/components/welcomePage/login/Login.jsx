@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
-import { Form } from "../../../StyledComponents/Form";
+import { Form } from "../../../StyledComponents/Form.style";
 import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 

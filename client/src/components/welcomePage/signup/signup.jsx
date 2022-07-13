@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
-import { Form } from "../../../StyledComponents/Form";
+import { Form } from "../../../StyledComponents/Form.style";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function SignUp() {

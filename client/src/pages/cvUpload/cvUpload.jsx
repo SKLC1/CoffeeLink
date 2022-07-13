@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
+import { Form } from '../../StyledComponents/Form.style'
 
 function CVupload() {
   const {currentUser} = useContext(UserContext)
@@ -34,8 +35,9 @@ function CVupload() {
 
   return ( 
     <div>
-      <p>upload your CV here:</p>
       <form onSubmit={handleSubmit}>
+        <Form>
+        <h2>upload your CV here:</h2>
         <h3>Full Name: <input name="name" type='text' onChange={handleChange}/></h3>
         <h3>Email: <input name="email" type='text' onChange={handleChange}/></h3>
         <h3>education: <input name="education" type='text' onChange={handleChange}/></h3>
@@ -45,6 +47,7 @@ function CVupload() {
         <h3>imgURL: <input name="imgURL" type='text' onChange={handleChange}/></h3>
         <h3>imgLinkTo: <input name="imgLinkTo" type='text' onChange={handleChange}/></h3>
         <button  type="submit">Save</button>
+        </Form>
       </form>
     </div>
    );

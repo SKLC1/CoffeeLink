@@ -6,6 +6,8 @@ import RotateLoader from "react-spinners/RotateLoader";
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext.js";
+import { Form } from "../../StyledComponents/Form.style.jsx";
+import { Input } from "../../StyledComponents/Input.style.jsx";
  
 
 function ExplorePage(){
@@ -64,8 +66,11 @@ function ExplorePage(){
   return(
     <>
       <div>
+        <Form>
         <RotateLoader loading={loading}/>
-        <input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></input>
+        <h3>Filter By Key words</h3>
+        <Input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></Input>
+        </Form>
         {isCVinCurrentUser(currentUser && currentUser.loggedUser._id)?renderCards():mustHaveCVMsg()}
       </div>
     </>
