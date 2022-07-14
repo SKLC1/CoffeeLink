@@ -18,6 +18,7 @@ function Login({setCurrentUser}){
       console.log(input);
       setType(input)
     } 
+
   
     async function handleLogin(){
       const loginURL = (type === 'hr')?
