@@ -1,4 +1,5 @@
 
+import { TextField } from "@mui/material";
 import axios from "axios"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +7,7 @@ import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
 import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
 import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
+import LogoSvgV3 from "../../LogosComponenets/LogoSvgV3";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function Login({setCurrentUser}){
@@ -18,7 +20,6 @@ function Login({setCurrentUser}){
       console.log(input);
       setType(input)
     } 
-
   
     async function handleLogin(){
       const loginURL = (type === 'hr')?
@@ -46,24 +47,11 @@ function Login({setCurrentUser}){
     return(
       <>
        <Form>
-       <h2>welcome to CoffeeLink!</h2>
+       <h2>Login</h2>
        <ToggleUserType handleSetUserType={handleSetUserType}/>
-       <h2>login</h2>
-       <JustFlexRow>
-        <InputAndLabel>
-        <label>Email:</label>
-        <input onChange={(e)=>setLoginEmail(e.target.value)}></input>
-        </InputAndLabel>
-       </JustFlexRow>
-       <JustFlexRow>
-        <InputAndLabel>
-        <label>Password:</label>
-        <input onChange={(e)=>setLoginPassword(e.target.value)}></input>
-        </InputAndLabel>
-       </JustFlexRow>
-       <JustFlexRow>
+        <TextField label="Email" onChange={(e)=>setLoginEmail(e.target.value)}></TextField>
+        <TextField label="Password" onChange={(e)=>setLoginPassword(e.target.value)}></TextField>
         <Button onClick={()=>handleLogin()}>Login</Button>
-       </JustFlexRow>
        <p>Don't have an account? <Link to='/signup'><h4>Sign Up</h4></Link></p>
        </Form>
       </>

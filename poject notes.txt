@@ -19,6 +19,7 @@ to do list:
 -fix recruier/hr select
 -dont show cv to user twice
 -style choose hr/worker
+-connect socket on login
 
 also:
 - remember i disabled strict mode for dnd library

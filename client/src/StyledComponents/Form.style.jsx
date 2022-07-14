@@ -45,4 +45,7 @@ justify-content: center;
   width: 100%;
   height: auto;
 } 
+& > *{
+  margin: 0.4rem;
+}
 `
