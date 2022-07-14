@@ -18,13 +18,6 @@ dotenv.config()
 
 
 //serve static assets if in prod
-if(process.env.NODE_ENV){
-  app.use(express.static('/client/build'))
-
-  app.get('*',(req ,res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'build', "index.html"))
-  })
-}
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -74,6 +67,14 @@ io.on("connection", (socket)=>{
     console.log(`user disconnected: ${socket.id}`)
   })
 });
+
+if(process.env.NODE_ENV){
+  app.use(express.static('/client/build'))
+
+  app.get('*',(req ,res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', "index.html"))
+  })
+}
 
 server.listen(PORT,()=>{
   console.log(`server running on ${PORT}`);
