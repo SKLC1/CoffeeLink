@@ -1,5 +1,8 @@
+import { TextField } from "@mui/material";
 import axios from "axios";
 import { useContext,useState } from "react";
+import { Button } from "../../StyledComponents/Button.style";
+import { Form } from "../../StyledComponents/Form.style";
 import { UserContext } from "../../UserContext";
 
 
@@ -40,13 +43,15 @@ function UploadJob() {
 
   return ( 
     <div>
-      <p>upload your CV here:</p>
+
+      <Form>
+      <h2>Inset your Job Details here:</h2>
       <form onSubmit={handleSubmit}>
-        <h3>Company Name: <input name="company" type='text' onChange={handleChange}/></h3>
-        <h3>Role Title: <input name="role_title" type='text' onChange={handleChange}/></h3>
-        <h3>Description: <input name="job_description" type='text' onChange={handleChange}/></h3>
-        <h3>Requirements: <input name="job_requirements" type='text' onChange={handleChange}/></h3>
-        <h3>Location: <input name="location" type='text' onChange={handleChange}/></h3>
+         <TextField margin="dense" label='Company Name' name="company" type='text' onChange={handleChange}/>
+         <TextField margin="dense" label='Role Title' name="role_title" type='text' onChange={handleChange}/>  
+         <TextField margin="dense" label='Description' name="job_description" type='text' onChange={handleChange}/>  
+         <TextField margin="dense" label='Requirements' name="job_requirements" type='text' onChange={handleChange}/>  
+         <TextField margin="dense" label='Location' name="location" type='text' onChange={handleChange}/>  
         <h3>Type: <select name="job_type" placeholder="select" onChange={handleChange}>
                     <option value="Remote">Remote</option>
                     <option value="Hybrid">Hybrid</option>
@@ -57,8 +62,9 @@ function UploadJob() {
                     <option value="part_time">Part time</option>
                   </select></h3>
 
-        <button  type="submit">Post</button>
+        <Button  type="submit">Post</Button>
       </form>
+      </Form>
     </div>
    );
 }

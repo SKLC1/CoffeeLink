@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import axios from "axios"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
 import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
@@ -60,6 +60,9 @@ function SignUp() {
         { type == 'hr' && <TextField label="Company" name="company" type='text' onChange={handleChange}/>}
         <JustFlexRow>
         <Button type="submit">Sign Up</Button>
+        <Link to='/login'>
+        <Button type="submit">Back to Login</Button>
+        </Link>
         </JustFlexRow>
         </InputAndLabel>
       </form>

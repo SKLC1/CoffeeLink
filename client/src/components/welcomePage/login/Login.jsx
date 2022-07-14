@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
+import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
+import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import LogoSvgV3 from "../../LogosComponenets/LogoSvgV3";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
@@ -47,10 +49,15 @@ function Login({setCurrentUser}){
        <Form>
        <h2>Login</h2>
        <ToggleUserType handleSetUserType={handleSetUserType}/>
-        <TextField label="Email" onChange={(e)=>setLoginEmail(e.target.value)}></TextField>
-        <TextField label="Password" onChange={(e)=>setLoginPassword(e.target.value)}></TextField>
+        <TextField margin="normal" label="Email" onChange={(e)=>setLoginEmail(e.target.value)}></TextField>
+        <TextField margin="normal" label="Password" onChange={(e)=>setLoginPassword(e.target.value)}></TextField>
         <Button onClick={()=>handleLogin()}>Login</Button>
-       <p>Don't have an account? <Link to='/signup'><h4>Sign Up</h4></Link></p>
+       <p>Don't have an account? <Link to='/signup'>
+       <JustFlexRow>
+        <Button>Sign Up</Button>
+       </JustFlexRow>
+        </Link>
+        </p>
        </Form>
       </>
      )

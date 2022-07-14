@@ -2,7 +2,7 @@ import { ToggleButton, ToggleButtonGroup} from '@mui/material'
 import { useState } from 'react';
 
 function ToggleUserType({handleSetUserType}){
-  const [alignment, setAlignment] = useState('hr');
+  const [alignment, setAlignment] = useState('worker');
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
