@@ -34,10 +34,10 @@ app.use('/jobs', jobsRouter)
 
 if(process.env.NODE_ENV){
   
-  app.use(express.static('client/build'))
+  app.use(express.static('../client/build'))
 
   app.get('*',(req ,res)=>{
-    res.sendFile(path.resolve('client', 'build', "index.html"))
+    res.sendFile(path.resolve('../client', 'build', "index.html"))
   })
 }
 //server
