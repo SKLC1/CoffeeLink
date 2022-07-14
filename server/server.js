@@ -32,6 +32,13 @@ app.use('/users', usersRouter)
 app.use('/hr_users', hrUsersRouter)
 app.use('/jobs', jobsRouter)
 
+if(process.env.NODE_ENV){
+  app.use(express.static('/client/build'))
+
+  app.get('*',(req ,res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', "index.html"))
+  })
+}
 //server
 const server = http.createServer(app)
 
@@ -68,13 +75,6 @@ io.on("connection", (socket)=>{
   })
 });
 
-if(process.env.NODE_ENV){
-  app.use(express.static('/client/build'))
-
-  app.get('*',(req ,res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'build', "index.html"))
-  })
-}
 
 server.listen(PORT,()=>{
   console.log(`server running on ${PORT}`);
