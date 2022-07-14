@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import axios from "axios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -52,21 +53,15 @@ function SignUp() {
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <form onSubmit={handleSubmit}>
         <InputAndLabel>
-        <h4>First Name: </h4><input name="first" type='text' onChange={handleChange}/>
-        </InputAndLabel>
-        <InputAndLabel>
-        <h4>Last Name: </h4><input name="last" type='text' onChange={handleChange}/>
-        </InputAndLabel>
-        <InputAndLabel>
-        <h4>Email:</h4> <input name="email" type='email' onChange={handleChange}/>
-        </InputAndLabel>
-        <InputAndLabel>
-        <h4>Password: </h4><input name="password" type='text' onChange={handleChange}/>
-        </InputAndLabel>
-        { type == 'hr' && <h3>Company: <input name="company" type='text' onChange={handleChange}/></h3>}
+        <TextField label="First Name" name="first" type='text' onChange={handleChange}/>
+        <TextField label="Last Name" name="last" type='text' onChange={handleChange}/>
+        <TextField label="Email" name="email" type='email' onChange={handleChange}/>
+        <TextField label="Password" name="password" type='text' onChange={handleChange}/>
+        { type == 'hr' && <TextField label="Company" name="company" type='text' onChange={handleChange}/>}
         <JustFlexRow>
         <Button type="submit">Sign Up</Button>
-         </JustFlexRow>
+        </JustFlexRow>
+        </InputAndLabel>
       </form>
       </Form>
     </div>
