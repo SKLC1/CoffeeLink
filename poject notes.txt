@@ -18,10 +18,7 @@ to do list:
 -fix preferences bug
 -fix recruier/hr select
 -dont show cv to user twice
-
-style tasks:
--chat section
--matches section
+-style choose hr/worker
 
 also:
 - remember i disabled strict mode for dnd library

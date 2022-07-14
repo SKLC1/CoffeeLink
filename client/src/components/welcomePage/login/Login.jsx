@@ -23,7 +23,6 @@ function Login({setCurrentUser}){
       const loginURL = (type === 'hr')?
       'http://localhost:5000/hr_users/login':
       'http://localhost:5000/users/login';
-
       const {data} = await axios.post(loginURL,{
         userType: type,
         email: loginEmail,
