@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Form } from "../../StyledComponents/Form.style";
 import { Item } from "../../StyledComponents/Item.style";
 import { Message } from "../../StyledComponents/Message.style";
@@ -11,6 +11,7 @@ function Chat({socket}) {
   const [currentMsg, setCurrentMsg] = useState("")
   const [msgList, setMsgList] = useState([])
   const {currentUser, notifications, setNotifications} = useContext(UserContext)
+  const location = useLocation()
   
   async function sendMsg(){
     if(currentMsg !==""){
@@ -29,7 +30,9 @@ function Chat({socket}) {
     socket.on("receive_message",(data)=>{
       console.log(data);
       setMsgList((prev)=>[...prev, data])
-      setNotifications((prev)=>[...prev, data ])
+      // if(!location.pathname.includes('chat')){
+        setNotifications((prev)=>[...prev, data ])
+      // }
     })
 
     socket.on("output-messages",(data)=>{
@@ -48,10 +51,11 @@ function Chat({socket}) {
     return msgList.map((msgContent)=>{
       return (
       <Message 
-        key={msgContent.time + msgContent.message} 
+        key={msgContent.time + msgContent.message + Math.random()} 
         backgroundColor={msgContent.author  === currentUser.loggedUser.first ?
-         "#7d7e80":
-         "hsl(210,99%,50%)"}
+          "hsl(210,99%,50%)":
+          "#7d7e80"
+        }
         side={msgContent.author  === currentUser.loggedUser.first ?
           "baseline":
           "end"}

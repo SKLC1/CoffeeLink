@@ -9,8 +9,7 @@ import { JustFlexRow, JustFlexRowCV } from "../../../StyledComponents/JustFlexRo
 import RenderCVimg from "./renderCVimg";
 
 
-
-function CVcard({cvObj, jobID}) {
+function CVcard({cvObj, jobID, socket}) {
   const {job} = useParams()
   const [preferences, setPreferences] = useState([])
   const [isImageShown, setIsImageShown] = useState(false)
@@ -53,6 +52,20 @@ function CVcard({cvObj, jobID}) {
       idOfApprovedApplicant: applicantID,
     })
     console.log(data);
+    sendMessageToUser(job,applicantID)
+  }
+  async function sendMessageToUser(jobID, applicantID){
+    const {data} = await axios.get(`http://localhost:5000/users/${applicantID}`)
+    console.log(data);
+    const userFirst = data.first;
+    console.log(userFirst+jobID);
+    const msgData = {
+      room: userFirst+jobID,
+      author: "Match Message",
+      message: `Hey ${userFirst}, I liked your Dynamic CV! what would be an appropriate time to chat?`,
+      time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes() 
+    }
+    socket.emit("send_message", msgData)
   }
 
   function renderCVbyPreferences(cv, preferencesArray){

@@ -43,7 +43,7 @@ function App() {
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>
           <Route exact path='/myJobs:id' element={<MyJobs/>}></Route>
           <Route exact path='/my_preferences:job' element={<RecruiterPreference currentUser={currentUser}/>}></Route>
-          <Route exact path='/review:job' element={<ReviewCV/>}></Route>
+          <Route exact path='/review:job' element={<ReviewCV socket={socket}/>}></Route>
           <Route exact path='/hr_matches:job' element={<HRMatches socket={socket} currentUser={currentUser}/>}></Route>
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
           <Route exact path='/my_matches' element={<WorkerMatches socket={socket} currentUser={currentUser}/>}></Route>

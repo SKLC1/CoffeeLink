@@ -17,7 +17,6 @@ function Login({setCurrentUser, socket}){
     const navigate = useNavigate()
 
     function handleSetUserType(input){
-      console.log(input);
       setType(input)
     } 
   
@@ -34,11 +33,11 @@ function Login({setCurrentUser, socket}){
       if(data.accessToken){
         setCurrentUser(data)
         // this should only be commented out on development
-        window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
+        // window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
         if(data.loggedUser.userType === 'worker'){
+          connectToRooms(data.loggedUser.rooms, socket)
           navigate('/')
         } else if (data.loggedUser.userType === 'hr'){
-          connectToRooms(data.loggedUser.rooms)
           navigate('/recruiter_profile')
         }
       } else {
@@ -46,9 +45,10 @@ function Login({setCurrentUser, socket}){
       }
     }
     
-    function connectToRooms(rooms){
-      rooms.map(room=>{
-        socket.emit("join_room", room);
+    function connectToRooms(rooms,socket){
+      rooms.forEach(async (room)=>{
+        const res = await socket.emit("join_room", room);
+        console.log(res);
       })
     }
     return(

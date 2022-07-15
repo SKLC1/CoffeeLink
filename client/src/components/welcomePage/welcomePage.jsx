@@ -4,7 +4,7 @@ import { JustFlexColumn } from "../../StyledComponents/JustFlexRow.jsx";
 import { UserContext } from "../../UserContext.js";
 import Login from "./login/Login.jsx";
 
-function WelcomePage(){
+function WelcomePage({socket}){
   //context
   const {currentUser, setCurrentUser} = useContext(UserContext)
 
@@ -23,7 +23,7 @@ function WelcomePage(){
   }
   return(
     <>
-     { currentUser?<Logout/>: <Login setCurrentUser={setCurrentUser}/>}
+     { currentUser?<Logout/>: <Login socket={socket} setCurrentUser={setCurrentUser}/>}
     </> 
   )
 }

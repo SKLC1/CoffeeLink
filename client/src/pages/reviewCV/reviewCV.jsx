@@ -12,7 +12,7 @@ import BarLoader from "react-spinners/BarLoader";
 import { JustFlexRow } from '../../StyledComponents/JustFlexRow';
 
 
-function ReviewCV() {
+function ReviewCV({socket}) {
   const [CVList, setCVList] = useState([])
   const {job} = useParams();
   const [loading,setLoading] = useState(true)
@@ -41,7 +41,7 @@ function ReviewCV() {
   
   function renderCVlist(){
     return CVList.map(cvObj=>{
-      return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID}/>
+      return <CVcard jobID={job} cvObj={cvObj} key={cvObj.applicantID} socket={socket}/>
     })
   }
 
