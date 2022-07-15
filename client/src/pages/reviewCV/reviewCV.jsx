@@ -14,14 +14,22 @@ function ReviewCV() {
   const {job} = useParams();
   
   useEffect(()=>{
-    getCVlist()
+    getApplicantsIDs()
   },[])
   
-  async function getCVlist(){
+  async function getApplicantsIDs(){
     const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
-    const cvList = data.applicants;
-    console.log(cvList);
-    setCVList(cvList)
+    const arrOfApplicantIDs = data.applicants;
+    getApplicantsData(arrOfApplicantIDs)
+  }
+  async function getApplicantsData(idArr){
+    const promiseArr = idArr.map(id=> {
+      return axios.get(`http://localhost:5000/users/${id.applicantID}`)
+    })
+    const res = await Promise.all(promiseArr)
+    const [{data}] = res;
+    console.log(data);
+    setCVList([...CVList, {cv: data.cv, applicantID: data._id}])
   }
   
   function renderCVlist(){
