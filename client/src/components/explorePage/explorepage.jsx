@@ -8,17 +8,20 @@ import { useContext } from "react";
 import { UserContext } from "../../UserContext.js";
 import { Form } from "../../StyledComponents/Form.style.jsx";
 import { Input } from "../../StyledComponents/Input.style.jsx";
+import { Button } from "../../StyledComponents/Button.style.jsx";
  
 
 function ExplorePage(){
   const [cards,setCards] = useState([])
   const [loading,setLoading] = useState(true)
+  const [isCV,setIsCV] = useState(false)
   const [keyword,setKeyword] = useState("")
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(()=>{
    isLoggedIn()
+   isCVinCurrentUser(currentUser && currentUser.loggedUser._id)
   },[])
   function isLoggedIn(){
     currentUser?showJobsToUser():navigate('/login')
@@ -44,22 +47,21 @@ function ExplorePage(){
       }
     })
   }
-  function mustHaveCVMsg(){
+  function MustHaveCVMsg(){
     return(
-      <div>
+      <Form>
         <h3>Sorry</h3>
-        <div>You Must Upload your Dynamic CV first</div>
-        <Link to='/cv_upload'><div>Upload CV</div></Link>
-      </div>
+        <h4>You Must Upload your Dynamic CV first</h4>
+        <Link to='/cv_upload'><Button>Upload CV</Button></Link>
+      </Form>
     )
   }
 
   async function isCVinCurrentUser(id){
     const {data} = await axios.get(`http://localhost:5000/users/${id}`)
+    console.log(data);
     if(data.cv){
-      return true
-    } else {
-      return false
+      setIsCV(true)
     }
   }
   
@@ -71,7 +73,7 @@ function ExplorePage(){
         <h3>Filter By Key words</h3>
         <Input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></Input>
         </Form>
-        {isCVinCurrentUser(currentUser && currentUser.loggedUser._id)?renderCards():mustHaveCVMsg()}
+        {isCV?renderCards():<MustHaveCVMsg/>}
       </div>
     </>
   )
