@@ -18,6 +18,7 @@ function UploadJob() {
     job_type:'Remote',
     job_time:'full_time',
     posted_by: currentUser.loggedUser._id,
+    preferences: ['name','education','experience','skills','languages'],
   })
 
   function handleChange(e){

@@ -6,9 +6,9 @@ function ToggleUserType({handleSetUserType}){
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== null) {
-      setAlignment(newAlignment);
+      setAlignment(event.target.value);
     }
-    handleSetUserType(alignment)
+    handleSetUserType(event.target.value)
   };
 
   return (
