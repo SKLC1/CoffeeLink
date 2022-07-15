@@ -13,6 +13,7 @@ function Chat({socket}) {
   const {currentUser, notifications, setNotifications} = useContext(UserContext)
   const location = useLocation()
   
+
   async function sendMsg(){
     if(currentMsg !==""){
       const msgData = {
