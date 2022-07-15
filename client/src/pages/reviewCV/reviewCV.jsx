@@ -7,7 +7,7 @@ import { CardContainer } from '../../StyledComponents/CardContainer';
 import { FlexCustom } from '../../StyledComponents/flexCustom';
 import { Button } from '../../StyledComponents/Button.style.jsx'
 import { NavButton } from '../../StyledComponents/Navbar.style';
-import { Title } from '../../StyledComponents/Title.style';
+import { Form } from '../../StyledComponents/Form.style.jsx';
 
 function ReviewCV() {
   const [CVList, setCVList] = useState([])
@@ -43,7 +43,7 @@ function ReviewCV() {
     <div>
       <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'90vh'}>
       <CardContainer>
-        {CVList.length === 0 ? <Title>no applicants yet</Title> : renderCVlist()}
+        {CVList.length === 0 ? <Form> No applicants yet</Form> : renderCVlist()}
       </CardContainer>
       <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
          <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>

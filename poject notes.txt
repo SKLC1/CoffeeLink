@@ -15,10 +15,10 @@ to do list:
 ✅-save messages to db
 ✅-notifcations
 -fix auth token
--fix preferences bug
--fix recruier/hr select bug
+✅-fix preferences bug
+✅-fix recruier/hr select bug
 -dont show cv to user twice
--style choose hr/worker
+✅-style choose hr/worker
 -connect socket on login
 -change all local host to heroku url
 

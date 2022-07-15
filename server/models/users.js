@@ -20,6 +20,7 @@ const userScheme = new mongoose.Schema({
   },
   matches: [Object],
   applied: [Object],
+  rooms: [String]
 })
 
 
