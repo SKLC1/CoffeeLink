@@ -9,6 +9,7 @@ import { UserContext } from "../../UserContext.js";
 import { Form } from "../../StyledComponents/Form.style.jsx";
 import { Input } from "../../StyledComponents/Input.style.jsx";
 import { Button } from "../../StyledComponents/Button.style.jsx";
+import { JustFlexRow } from "../../StyledComponents/JustFlexRow.jsx";
  
 
 function ExplorePage(){
@@ -69,11 +70,13 @@ function ExplorePage(){
     <>
       <div>
         <Form>
-        <BarLoader loading={loading}/>
         <h3>Filter By Key words</h3>
         <Input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></Input>
         </Form>
-        {isCV?renderCards():<MustHaveCVMsg/>}
+        <JustFlexRow>
+        <BarLoader loading={loading}/>
+        </JustFlexRow>
+        {isCV?renderCards():!loading && <MustHaveCVMsg/>}
       </div>
     </>
   )

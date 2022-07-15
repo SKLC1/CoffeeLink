@@ -11,7 +11,7 @@ function WorkerProfile() {
     <>
      <ProfilePage>
       <h3>{`${currentUser && currentUser.loggedUser.first}'s profile page`} </h3>
-      <div>PFP</div>
+      <br/>
       <Link to={'/cv_upload'}>
         <Button>
         <div>Upload your CV</div>
