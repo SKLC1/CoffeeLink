@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
 import JobCard from "../resuableComponents/jobCard/jobCard.jsx"
-import RotateLoader from "react-spinners/RotateLoader";
+import BarLoader from "react-spinners/BarLoader";
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext.js";
@@ -69,7 +69,7 @@ function ExplorePage(){
     <>
       <div>
         <Form>
-        <RotateLoader loading={loading}/>
+        <BarLoader loading={loading}/>
         <h3>Filter By Key words</h3>
         <Input onChange={(e)=>setKeyword(e.target.value)} type='text' placeholder="search"></Input>
         </Form>

@@ -8,10 +8,14 @@ import { FlexCustom } from '../../StyledComponents/flexCustom';
 import { Button } from '../../StyledComponents/Button.style.jsx'
 import { NavButton } from '../../StyledComponents/Navbar.style';
 import { Form } from '../../StyledComponents/Form.style.jsx';
+import BarLoader from "react-spinners/BarLoader";
+import { JustFlexRow } from '../../StyledComponents/JustFlexRow';
+
 
 function ReviewCV() {
   const [CVList, setCVList] = useState([])
   const {job} = useParams();
+  const [loading,setLoading] = useState(true)
   
   useEffect(()=>{
     getApplicantsIDs()
@@ -27,9 +31,12 @@ function ReviewCV() {
       return axios.get(`http://localhost:5000/users/${id.applicantID}`)
     })
     const res = await Promise.all(promiseArr)
-    const [{data}] = res;
-    console.log(data);
-    setCVList([...CVList, {cv: data.cv, applicantID: data._id}])
+    console.log(res);
+    if(res.length > 0){
+      const [{data}] = res;
+      setCVList([...CVList, {cv: data.cv, applicantID: data._id}])
+    }
+      setLoading(false)
   }
   
   function renderCVlist(){
@@ -41,9 +48,12 @@ function ReviewCV() {
 
   return ( 
     <div>
+      <JustFlexRow>
+       <BarLoader loading={loading}/>
+      </JustFlexRow>
       <FlexCustom direction={'column'} align={'center'} justify={'space-between'} height={'90vh'}>
       <CardContainer>
-        {CVList.length === 0 ? <Form> No applicants yet</Form> : renderCVlist()}
+        {CVList.length === 0 ? !loading && <Form> No applicants yet</Form> : renderCVlist()}
       </CardContainer>
       <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
          <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>
