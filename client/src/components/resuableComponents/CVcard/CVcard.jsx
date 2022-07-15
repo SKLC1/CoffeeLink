@@ -89,7 +89,9 @@ function CVcard({cvObj, jobID}) {
           <div> 
             {isImageShown && cv.imgURL?<RenderCVimg imgURL={cv.imgURL} link={cv.imgLinkTo}/>:null}
           </div>
-            {cv.imgURL && !isImageShown && <div>Swipe Down To See Project</div>}
+          <div>
+            {Object.values(cv).includes("imgURL") && !isImageShown && <div>Swipe Down To See Project</div>}
+          </div>
         </Card>
     </TinderCard>
       </div>

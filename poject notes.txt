@@ -16,10 +16,11 @@ to do list:
 ✅-notifcations
 -fix auth token
 -fix preferences bug
--fix recruier/hr select
+-fix recruier/hr select bug
 -dont show cv to user twice
 -style choose hr/worker
 -connect socket on login
+-change all local host to heroku url
 
 also:
 - remember i disabled strict mode for dnd library

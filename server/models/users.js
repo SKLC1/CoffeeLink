@@ -7,7 +7,17 @@ const userScheme = new mongoose.Schema({
   password: {type: String, required: true},
   email: {type: String, required: true , unique: true},
   userType: {type: String, required: true, default: 'worker', immutable: true },
-  cv: {type: Object},
+  cv: {
+    name: {type: String, required: true, maxlength: 20},
+    email: {type: String, required: true},
+    education: {type: String, required: true, maxlength: 200},
+    experience: {type: String, required: true, maxlength: 200},
+    skills: {type: String, required: true, maxlength: 40},
+    languages: {type: String, required: true, maxlength: 20},
+    imgURL: {type: String, required: true},
+    imgLinkTo: {type: String, required: true},
+    
+  },
   matches: [Object],
   applied: [Object],
 })
