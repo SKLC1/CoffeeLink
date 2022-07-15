@@ -3,6 +3,8 @@ import TinderCard from 'react-tinder-card'
 import { JustFlexRowCV } from '../../../StyledComponents/JustFlexRow';
 import { Card } from '../../../StyledComponents/Card.style'
 import './jobCard.css'
+import { CVCategory } from '../../../StyledComponents/CVcategory';
+import { JobCardCategory } from '../../../StyledComponents/JobCardCategory';
 
 // const URL = process.env?"heroku":"local";
 
@@ -38,14 +40,13 @@ function JobCard({card, currentUser}){
         cardArr.push([key, value])
       }
     }
-    return cardArr.map(categoryObj=>{
+    return cardArr.map((categoryObj,idx)=>{
+      const categoryNameArr = ['','Role Title','Description','Requirements','Location'];
       return(
-       <div key={categoryObj[0]} >
-         <JustFlexRowCV>
-          {categoryObj[0] === 'company'?<h2>{categoryObj[1]}</h2>:<h4>{categoryObj[1]}</h4>}
-         {/* <h4>{categoryObj[1]}</h4>  */}
-         </JustFlexRowCV>
-       </div>
+       <JobCardCategory key={categoryObj[0]} >
+          <h2>{categoryNameArr[idx]}</h2>
+          {categoryObj[0] === 'company'?<h1>{categoryObj[1]}</h1>:<h4>{categoryObj[1]}</h4>}
+       </JobCardCategory>
       )
    })
   }

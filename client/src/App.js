@@ -37,7 +37,7 @@ function App() {
         {/*  basename='https://coffee--link.herokuapp.com/' */}
       <Navbar currentUser={currentUser}/>
         <Routes>
-          <Route exact path='/login' element={<WelcomePage/>}></Route>
+          <Route exact path='/login' element={<WelcomePage socket={socket}/>}></Route>
           <Route exact path='/signup' element={<SignUp/>}></Route>
           <Route exact path='/' element={<ExplorePage/>}></Route>
           <Route exact path='/recruiter_profile' element={<RecruiterProfile/>}></Route>

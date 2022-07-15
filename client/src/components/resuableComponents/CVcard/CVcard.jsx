@@ -7,7 +7,6 @@ import { Card } from "../../../StyledComponents/Card.style";
 import { CVCategory } from "../../../StyledComponents/CVcategory";
 import { JustFlexRow, JustFlexRowCV } from "../../../StyledComponents/JustFlexRow";
 import RenderCVimg from "./renderCVimg";
-import BarLoader from "react-spinners/BarLoader";
 
 
 
@@ -16,7 +15,6 @@ function CVcard({cvObj, jobID}) {
   const [preferences, setPreferences] = useState([])
   const [isImageShown, setIsImageShown] = useState(false)
   const {cv, applicantID} = cvObj;
-  const [loading,setLoading] = useState(true)
   
   useEffect(()=>{
     getJob()

@@ -10,7 +10,7 @@ import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import LogoSvgV3 from "../../LogosComponenets/LogoSvgV3";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
-function Login({setCurrentUser}){
+function Login({setCurrentUser, socket}){
     const [type, setType] = useState('worker');
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -38,11 +38,18 @@ function Login({setCurrentUser}){
         if(data.loggedUser.userType === 'worker'){
           navigate('/')
         } else if (data.loggedUser.userType === 'hr'){
+          connectToRooms(data.loggedUser.rooms)
           navigate('/recruiter_profile')
         }
       } else {
         console.log('something went wrong');
       }
+    }
+    
+    function connectToRooms(rooms){
+      rooms.map(room=>{
+        socket.emit("join_room", room);
+      })
     }
     return(
       <>
