@@ -10,7 +10,7 @@ import { Form } from "../../StyledComponents/Form.style.jsx";
 import { Input } from "../../StyledComponents/Input.style.jsx";
 import { Button } from "../../StyledComponents/Button.style.jsx";
 import { JustFlexRow } from "../../StyledComponents/JustFlexRow.jsx";
- 
+import {baseUrl} from '../resuableComponents/baseURL.jsx'
 
 function ExplorePage(){
   const [cards,setCards] = useState([])
@@ -27,7 +27,7 @@ function ExplorePage(){
   function isLoggedIn(){
     currentUser?showJobsToUser():navigate('/login')
   }
-
+ 
   async function showJobsToUser(){
     const {data} = await axios.get('http://localhost:5000/jobs')
     setCards(data)
@@ -59,10 +59,14 @@ function ExplorePage(){
   }
 
   async function isCVinCurrentUser(id){
-    const {data} = await axios.get(`http://localhost:5000/users/${id}`)
+    try {
+    const {data} = await axios.get(`${baseUrl}/${id}`)
     console.log(data);
     if(data.cv){
       setIsCV(true)
+    }
+    } catch (error) {
+     console.log(error); 
     }
   }
   

@@ -24,8 +24,8 @@ function Login({setCurrentUser, socket}){
 
     async function handleLogin(){
       const loginURL = (type === 'hr')?
-      `${baseUrl}hr_users/login`:
-      `${baseUrl}users/login`;
+      `${baseUrl}/hr_users/login`:
+      `${baseUrl}/users/login`;
       try{
 
         const {data} = await axios.post(loginURL,{

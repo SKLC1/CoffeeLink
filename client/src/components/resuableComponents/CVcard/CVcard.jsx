@@ -21,7 +21,7 @@ function CVcard({cvObj, jobID, socket}) {
   },[])
   async function getJob(){
     try { 
-      const {data} = await axios.get(`${baseUrl}jobs/${job}`)
+      const {data} = await axios.get(`${baseUrl}/jobs/${job}`)
       setPreferences(data.preferences)
     } catch (error) {
       console.log(error); 
@@ -40,7 +40,7 @@ function CVcard({cvObj, jobID, socket}) {
   }
   
   async function createMatch(ID){
-    const url = `${baseUrl}users/addMatch/${ID}`
+    const url = `${baseUrl}/users/addMatch/${ID}`
     const {data} = await axios.patch(url,{
       match: jobID,
     })
@@ -51,7 +51,7 @@ function CVcard({cvObj, jobID, socket}) {
   }
 
   async function addToJobApproved(){
-    const {data} = await axios.patch(`${baseUrl}jobs/`,{
+    const {data} = await axios.patch(`${baseUrl}/jobs/`,{
       idOfJob: job,
       action: 'addApproved',
       idOfApprovedApplicant: applicantID,
@@ -60,7 +60,7 @@ function CVcard({cvObj, jobID, socket}) {
     sendMessageToUser(job,applicantID)
   }
   async function sendMessageToUser(jobID, applicantID){
-    const {data} = await axios.get(`${baseUrl}users/${applicantID}`)
+    const {data} = await axios.get(`${baseUrl}/users/${applicantID}`)
     console.log(data);
     const userFirst = data.first;
     console.log(userFirst+jobID);
