@@ -44,7 +44,6 @@ if(process.env.NODE_ENV){
 const server = http.createServer(app)
 
 const socketCorsURL = process.env.NODE_ENV ? 'https://coffee--link.herokuapp.com' :  'http://localhost:3000'
-console.log("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 console.log(socketCorsURL);
 
 const io = new Server(server,{
@@ -54,6 +53,7 @@ const io = new Server(server,{
     credentials: true
   }
 });
+
 
 io.on("connection", (socket)=>{
   console.log(`user connected: ${socket.id}`);

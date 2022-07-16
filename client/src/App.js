@@ -19,7 +19,8 @@ import Chat from './pages/Chat/Chat.jsx';
 import './App.css'
 
 // socket connection
-const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("http://localhost:5000");
+const socket = io();
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
