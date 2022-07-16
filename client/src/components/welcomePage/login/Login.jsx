@@ -26,24 +26,29 @@ function Login({setCurrentUser, socket}){
       const loginURL = (type === 'hr')?
       `${baseUrl}hr_users/login`:
       `${baseUrl}users/login`;
-      const {data} = await axios.post(loginURL,{
-        userType: type,
-        email: loginEmail,
-        password: loginPassword,
-      });
-      console.log(data);
-      if(data.accessToken){
-        setCurrentUser(data)
-        // this should only be commented out on development
-        // window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
-        if(data.loggedUser.userType === 'worker'){
-          connectToRooms(data.loggedUser.rooms, socket)
-          navigate('/')
-        } else if (data.loggedUser.userType === 'hr'){
-          navigate('/recruiter_profile')
+      try{
+
+        const {data} = await axios.post(loginURL,{
+          userType: type,
+          email: loginEmail,
+          password: loginPassword,
+        });
+        console.log(data);
+        if(data.accessToken){
+          setCurrentUser(data)
+          // this should only be commented out on development
+          // window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
+          if(data.loggedUser.userType === 'worker'){
+            connectToRooms(data.loggedUser.rooms, socket)
+            navigate('/')
+          } else if (data.loggedUser.userType === 'hr'){
+            navigate('/recruiter_profile')
+          }
+        } else {
+          console.log('something went wrong');
         }
-      } else {
-        console.log('something went wrong');
+      } catch(e){
+        console.log(e);
       }
     }
     

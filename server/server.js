@@ -11,6 +11,7 @@ import http from 'http'
 import path from 'path';
 //msg
 import { Msg } from './models/messages.js'
+import { baseUrl } from '../client/src/components/resuableComponents/baseURL.jsx';
 export const messagesRouter = express.Router()
 
 // process.env.NODE_ENV ? https://coffee--link.herokuapp.com/ :  http://localhost:3000/
@@ -45,7 +46,7 @@ const server = http.createServer(app)
 
 const io = new Server(server,{
   cors:{
-    origin: 'http://localhost:3000',
+    origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5000/' : 'https://coffee--link.herokuapp.com/',
   }
 });
 
