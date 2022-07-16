@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
 import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
-import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
+import { JustFlexColumn, JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import { baseUrl } from "../../resuableComponents/baseURL";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
@@ -54,11 +54,13 @@ function SignUp() {
       <ToggleUserType handleSetUserType={handleSetUserType}/>
       <form onSubmit={handleSubmit}>
         <InputAndLabel>
+        <JustFlexColumn>
         <TextField label="First Name" name="first" type='text' onChange={handleChange}/>
         <TextField label="Last Name" name="last" type='text' onChange={handleChange}/>
         <TextField label="Email" name="email" type='email' onChange={handleChange}/>
         <TextField label="Password" name="password" type='text' onChange={handleChange}/>
         { type == 'hr' && <TextField label="Company" name="company" type='text' onChange={handleChange}/>}
+        </JustFlexColumn>
         <JustFlexRow>
         <Button type="submit">Sign Up</Button>
         <Link to='/login'>
