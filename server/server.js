@@ -50,7 +50,7 @@ console.log(socketCorsURL);
 
 const io = new Server(server,{
   cors:{
-    origin: 'https://coffee--link.herokuapp.com/',
+    origin: '*',
   }
 });
 
