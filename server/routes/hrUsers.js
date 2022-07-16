@@ -91,7 +91,7 @@ hrUsersRouter.post('/login',async(req,res)=>{
     if (!validPassword){
       return res.status(400).send('Invalid Email or Password.')
     } else {
-      const accessToken = jwt.sign(users.toJSON(), process.env.ACCESS_TOKEN_SECRET)
+      const accessToken = jwt.sign(users.toJSON(), `${process.env.ACCESS_TOKEN_SECRET}`)
       res.status(200).send({loggedUser: users ,accessToken: accessToken})
     }
 } catch (error) {
