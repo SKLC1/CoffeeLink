@@ -6,6 +6,7 @@ import TinderCard from "react-tinder-card";
 import { Card } from "../../../StyledComponents/Card.style";
 import { CVCategory } from "../../../StyledComponents/CVcategory";
 import { JustFlexRow, JustFlexRowCV } from "../../../StyledComponents/JustFlexRow";
+import { baseUrl } from "../baseURL";
 import RenderCVimg from "./renderCVimg";
 
 
@@ -19,8 +20,12 @@ function CVcard({cvObj, jobID, socket}) {
     getJob()
   },[])
   async function getJob(){
-    const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
-    setPreferences(data.preferences)
+    try { 
+      const {data} = await axios.get(`${baseUrl}${job}`)
+      setPreferences(data.preferences)
+    } catch (error) {
+      console.log(error); 
+    }
   }
 
   const onSwipe = (direction) => {
@@ -35,7 +40,7 @@ function CVcard({cvObj, jobID, socket}) {
   }
   
   async function createMatch(ID){
-    const url = `http://localhost:5000/users/addMatch/${ID}`
+    const url = `${baseUrl}users/addMatch/${ID}`
     const {data} = await axios.patch(url,{
       match: jobID,
     })
@@ -46,7 +51,7 @@ function CVcard({cvObj, jobID, socket}) {
   }
 
   async function addToJobApproved(){
-    const {data} = await axios.patch(`http://localhost:5000/jobs/`,{
+    const {data} = await axios.patch(`${baseUrl}jobs/`,{
       idOfJob: job,
       action: 'addApproved',
       idOfApprovedApplicant: applicantID,
@@ -55,7 +60,7 @@ function CVcard({cvObj, jobID, socket}) {
     sendMessageToUser(job,applicantID)
   }
   async function sendMessageToUser(jobID, applicantID){
-    const {data} = await axios.get(`http://localhost:5000/users/${applicantID}`)
+    const {data} = await axios.get(`${baseUrl}users/${applicantID}`)
     console.log(data);
     const userFirst = data.first;
     console.log(userFirst+jobID);
