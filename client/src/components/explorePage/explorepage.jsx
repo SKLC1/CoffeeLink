@@ -31,6 +31,7 @@ function ExplorePage(){
   async function showJobsToUser(){
     try {
     const {data} = await axios.get(`${baseUrl}/jobs`)
+    console.log(data);
     setCards(data)
     setLoading(false)
     } catch (error) {
@@ -64,7 +65,7 @@ function ExplorePage(){
 
   async function isCVinCurrentUser(id){
     try {
-    const {data} = await axios.get(`${baseUrl}/${id}`)
+    const {data} = await axios.get(`${baseUrl}/users/${id}`)
     console.log(data);
     if(data.cv){
       setIsCV(true)
