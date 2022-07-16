@@ -6,6 +6,7 @@ import { Button } from "../../../StyledComponents/Button.style";
 import { Form } from "../../../StyledComponents/Form.style";
 import { InputAndLabel } from "../../../StyledComponents/InputAndLabel.style";
 import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
+import { baseUrl } from "../../resuableComponents/baseURL";
 import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserType";
 
 function SignUp() {
@@ -32,7 +33,7 @@ function SignUp() {
     e.preventDefault()
     try {
       const {first,last,email,password,userType,company} = signupInfo;
-      const {data} = await axios.post(`https://coffee--link.herokuapp.com/${type == 'hr'?'hr_users':'users'}`,{
+      const {data} = await axios.post(`${baseUrl}/${type == 'hr'?'hr_users':'users'}`,{
         first,last,email,password,company
       })
       if(!data.message){

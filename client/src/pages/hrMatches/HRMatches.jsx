@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { renderMatches, useParams } from "react-router-dom";
+import { baseUrl } from "../../components/resuableComponents/baseURL";
 import { Title } from "../../StyledComponents/Title.style";
 import HRMatchCard from "./HRMatchCard/HRMatchCard";
 
@@ -12,9 +13,9 @@ function HRMatches({socket, currentUser}) {
   useEffect(()=>{
     getMatches()
   },[])
-
+ 
   async function getMatches(){
-    const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
+    const {data} = await axios.get(`${baseUrl}/jobs/${job}`)
     console.log(data);
     if(data.approved){
       getAllApprovedApplicants(data.approved)
@@ -22,7 +23,7 @@ function HRMatches({socket, currentUser}) {
   }
 
   async function getAllApprovedApplicants(approvedArray){
-    const arrOfUsersReq = approvedArray.map(userID=>{ return axios.get(`http://localhost:5000/users/${userID}`)})
+    const arrOfUsersReq = approvedArray.map(userID=>{ return axios.get(`${baseUrl}/users/${userID}`)})
     const allUsers = await Promise.all(arrOfUsersReq)
     setMatches(allUsers)
   }

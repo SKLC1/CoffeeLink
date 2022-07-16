@@ -40,6 +40,7 @@ function CVcard({cvObj, jobID, socket}) {
   }
   
   async function createMatch(ID){
+    try {
     const url = `${baseUrl}/users/addMatch/${ID}`
     const {data} = await axios.patch(url,{
       match: jobID,
@@ -47,6 +48,9 @@ function CVcard({cvObj, jobID, socket}) {
     console.log(data);
     if(data.cv){
       addToJobApproved()
+    }
+    } catch (error) {
+      console.log(error); 
     }
   }
 

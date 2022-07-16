@@ -22,6 +22,9 @@ to do list:
 -connect socket on login
 -change all local host to heroku url
 
+refactoring:
+-change room name from first+jobID to userID+JobID
+
 also:
 - remember i disabled strict mode for dnd library
 - remmeber local storage set CurUser is off

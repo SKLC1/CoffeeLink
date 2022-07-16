@@ -29,9 +29,13 @@ function ExplorePage(){
   }
  
   async function showJobsToUser(){
-    const {data} = await axios.get('http://localhost:5000/jobs')
+    try {
+    const {data} = await axios.get(`${baseUrl}/jobs`)
     setCards(data)
     setLoading(false)
+    } catch (error) {
+      console.log(error);
+    }
   }
   
   function renderCards(){

@@ -5,6 +5,7 @@ import { Card } from '../../../StyledComponents/Card.style'
 import './jobCard.css'
 import { CVCategory } from '../../../StyledComponents/CVcategory';
 import { JobCardCategory } from '../../../StyledComponents/JobCardCategory';
+import { baseUrl } from '../baseURL';
 
 // const URL = process.env?"heroku":"local";
 
@@ -22,7 +23,7 @@ function JobCard({card, currentUser}){
   
   async function addUserToApplied(){
     const {loggedUser} = currentUser;
-    const {data} = await axios.patch('http://localhost:5000/jobs',{
+    const {data} = await axios.patch(`${baseUrl}/jobs`,{
       idOfJob: card._id,
       action: "addCV",
       cvObj: {
