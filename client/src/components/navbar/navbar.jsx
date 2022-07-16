@@ -8,7 +8,7 @@ import LogoSvgV1 from "../LogosComponenets/LogoSvgV1";
 import LogoSvgV2 from "../LogosComponenets/LogoSvgV1";
 import LogoSvgV3 from "../LogosComponenets/LogoSvgV3";
 
-function Navbar({currentUser}){
+function Navbar({currentUser, socket}){
 
   return(
     <>
@@ -31,7 +31,7 @@ function Navbar({currentUser}){
          Explore
          </NavButton>
        </Link>}
-       <Notifications/>
+       <Notifications socket={socket}/>
      </NavbarLinks>}
     </NavbarComponent>
     </>

@@ -36,7 +36,7 @@ function App() {
       <UserContext.Provider value={{currentUser, setCurrentUser, notifications, setNotifications}}>
       <Router>
         {/*  basename='https://coffee--link.herokuapp.com/' */}
-      <Navbar currentUser={currentUser}/>
+      <Navbar currentUser={currentUser} socket={socket}/>
         <Routes>
           <Route exact path='/login' element={<WelcomePage socket={socket}/>}></Route>
           <Route exact path='/signup' element={<SignUp/>}></Route>

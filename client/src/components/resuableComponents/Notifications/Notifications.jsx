@@ -8,12 +8,21 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { NavButton } from "../../../StyledComponents/Navbar.style";
 import './Notifications.css'
 
-function Notifications() {
-  const {currentUser ,notifications} = useContext(UserContext)
+function Notifications({socket}) {
+  const {currentUser ,notifications , setNotifications} = useContext(UserContext)
 
   useEffect(()=>{
       renderNotificationCount()
   },[notifications])
+
+  useEffect(()=>{
+    socket.on("receive_message",(data)=>{
+      // if(!location.pathname.includes('chat')){
+        setNotifications((prev)=>[...prev, data ])
+      // }
+    })
+
+  },[socket])
   
   function renderNotificationCount(){
     if(notifications.length > 0 && notifications.length < 10){
