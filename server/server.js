@@ -19,7 +19,6 @@ dotenv.config()
 
 //serve static assets if in prod
 const app = express();
-console.log(process.env.PORT);
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.DATABASE_URI,{useNewUrlParser: true})
@@ -33,6 +32,7 @@ app.use('/users', usersRouter)
 app.use('/hr_users', hrUsersRouter)
 app.use('/jobs', jobsRouter)
 
+//server
 if(process.env.NODE_ENV){
   
   app.use(express.static('../client/build'))
@@ -41,10 +41,9 @@ if(process.env.NODE_ENV){
     res.sendFile(path.resolve('../client', 'build', "index.html"))
   })
 }
-//server
 const server = http.createServer(app)
 
-const socketCorsURL = process.env.NODE_ENV ? 'https://coffee--link.herokuapp.com/' :  'http://localhost:3000/'
+const socketCorsURL = process.env.NODE_ENV ? 'https://coffee--link.herokuapp.com' :  'http://localhost:3000'
 console.log("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 console.log(socketCorsURL);
 
