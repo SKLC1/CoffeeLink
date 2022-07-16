@@ -19,6 +19,7 @@ dotenv.config()
 
 //serve static assets if in prod
 const app = express();
+console.log(process.env.PORT);
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.DATABASE_URI,{useNewUrlParser: true})
@@ -43,14 +44,12 @@ if(process.env.NODE_ENV){
 //server
 const server = http.createServer(app)
 
-console.log(process.env.NODE_ENV); // development
-console.log(process.env.NODE_ENV == 'development'); // false
-const socketCorsURL = process.env.NODE_ENV !== 'development' ? 'http://localhost:3000' : 'https://coffee--link.herokuapp.com/'
+const socketCorsURL = process.env.NODE_ENV === undefined ? 'http://localhost:3000' : 'https://coffee--link.herokuapp.com/'
 console.log(socketCorsURL);
 
 const io = new Server(server,{
   cors:{
-    origin: 'https://coffee--link.herokuapp.com',
+    origin: socketCorsURL,
     methods: ["GET", "POST"],
     credentials: true
   }

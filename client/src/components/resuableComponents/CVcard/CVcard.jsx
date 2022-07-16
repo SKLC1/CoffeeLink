@@ -21,7 +21,7 @@ function CVcard({cvObj, jobID, socket}) {
   },[])
   async function getJob(){
     try { 
-      const {data} = await axios.get(`${baseUrl}${job}`)
+      const {data} = await axios.get(`${baseUrl}jobs/${job}`)
       setPreferences(data.preferences)
     } catch (error) {
       console.log(error); 
