@@ -32,7 +32,7 @@ function Chat({socket}) {
       console.log(data);
       setMsgList((prev)=>[...prev, data])
       // if(!location.pathname.includes('chat')){
-        setNotifications((prev)=>[...prev, data ])
+        // setNotifications((prev)=>[...prev, data ])
       // }
     })
 
