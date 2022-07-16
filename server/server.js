@@ -45,7 +45,7 @@ const server = http.createServer(app)
 
 console.log(process.env.NODE_ENV); // development
 console.log(process.env.NODE_ENV == 'development'); // false
-const socketCorsURL = process.env.NODE_ENV === 'dev' ? 'http://localhost:3000' : 'https://coffee--link.herokuapp.com/'
+const socketCorsURL = process.env.NODE_ENV !== 'development' ? 'http://localhost:3000' : 'https://coffee--link.herokuapp.com/'
 console.log(socketCorsURL);
 
 const io = new Server(server,{
