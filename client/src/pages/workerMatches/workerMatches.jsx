@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { renderMatches } from "react-router-dom";
+import { baseUrl } from "../../components/resuableComponents/baseURL";
 import { JustFlexRow } from "../../StyledComponents/JustFlexRow";
 import { Title } from "../../StyledComponents/Title.style";
 import { UserContext } from "../../UserContext";
@@ -17,19 +18,29 @@ function WorkerMatches({socket, currentUser}){
   },[])
   
   async function getAllMatches(){
-    const {data} = await axios.get(`http://localhost:5000/users/${currentUser && currentUser.loggedUser._id}`);
+    try {
+    const {data} = await axios.get(`${baseUrl}/users/${currentUser && currentUser.loggedUser._id}`);
     const matches = data.matches;
     getMatchesCards(matches)
+    
+   } catch (error) {
+    console.log(error);
+   }
   }
   
   async function getMatchesCards(matches){
+    try {
     const all = matches.map(id=>{
-      return axios.get(`http://localhost:5000/jobs/${id}`)
+      return axios.get(`${baseUrl}/jobs/${id}`)
     })
     const res = await Promise.all(all);
     const jobMatches = res.map(match=>{ return match.data})
     console.log(jobMatches);
     setJobMatches(jobMatches)
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function renderMatches(){

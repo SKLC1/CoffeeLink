@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ListItem } from "@mui/material";
 import { Item } from "../../StyledComponents/Item.style";
 import { JustFlexColumn } from "../../StyledComponents/JustFlexRow";
+import { baseUrl } from "../../components/resuableComponents/baseURL";
 
 
 
@@ -22,9 +23,13 @@ function MyJobs() {
   },[])
 
   async function getUpdatedCurrentUser(){
-    const getOneUrl = `http://localhost:5000/hr_users/${id}`;
+    try {
+    const getOneUrl = `${baseUrl}/hr_users/${id}`;
     const {data} = await axios.get(getOneUrl);
     setUserJobs(data.posted_jobs)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function renderPostedJobs(){

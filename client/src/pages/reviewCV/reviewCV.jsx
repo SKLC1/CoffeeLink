@@ -10,6 +10,7 @@ import { NavButton } from '../../StyledComponents/Navbar.style';
 import { Form } from '../../StyledComponents/Form.style.jsx';
 import BarLoader from "react-spinners/BarLoader";
 import { JustFlexRow } from '../../StyledComponents/JustFlexRow';
+import { baseUrl } from '../../components/resuableComponents/baseURL';
 
 
 function ReviewCV({socket}) {
@@ -22,13 +23,13 @@ function ReviewCV({socket}) {
   },[])
   
   async function getApplicantsIDs(){
-    const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
+    const {data} = await axios.get(`${baseUrl}/jobs/${job}`)
     const arrOfApplicantIDs = data.applicants;
     getApplicantsData(arrOfApplicantIDs)
   }
   async function getApplicantsData(idArr){
     const promiseArr = idArr.map(id=> {
-      return axios.get(`http://localhost:5000/users/${id.applicantID}`)
+      return axios.get(`${baseUrl}/users/${id.applicantID}`)
     })
     const res = await Promise.all(promiseArr)
     console.log(res);

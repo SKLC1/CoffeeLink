@@ -7,6 +7,7 @@ import { Item } from "../../StyledComponents/Item.style";
 import { Title } from "../../StyledComponents/Title.style";
 import { Button } from "../../StyledComponents/Button.style";
 import { JustFlexRow } from "../../StyledComponents/JustFlexRow";
+import {baseUrl} from '../../components/resuableComponents/baseURL.jsx'
 
 function RecruiterPreference({currentUser}) {
   const {job} = useParams()
@@ -16,14 +17,14 @@ function RecruiterPreference({currentUser}) {
   useEffect(()=>{
     getUpdatedPreferences()
   },[])
-
+  
   async function getUpdatedPreferences(){
-    const {data} = await axios.get(`http://localhost:5000/jobs/${job}`)
+    const {data} = await axios.get(`${baseUrl}/jobs/${job}`)
     setJobDetails(data)
     setPreferences(data.preferences)
   }
   async function handleSavePreferences(){
-    const {data} = await axios.patch(`http://localhost:5000/jobs/${job}`,{prop: 'preferences', value: preferences})
+    const {data} = await axios.patch(`${baseUrl}/jobs/${job}`,{prop: 'preferences', value: preferences})
     console.log(data);
   }
 
