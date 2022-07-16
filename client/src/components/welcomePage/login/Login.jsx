@@ -19,12 +19,13 @@ function Login({setCurrentUser, socket}){
 
     function handleSetUserType(input){
       setType(input)
-    } 
+    }
+    
 
     async function handleLogin(){
       const loginURL = (type === 'hr')?
-      'http://localhost:5000/hr_users/login':
-      'http://localhost:5000/users/login';
+      `${baseUrl}hr_users/login`:
+      `${baseUrl}users/login`;
       const {data} = await axios.post(loginURL,{
         userType: type,
         email: loginEmail,
