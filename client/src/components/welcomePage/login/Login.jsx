@@ -37,7 +37,7 @@ function Login({setCurrentUser, socket}){
         if(data.accessToken){
           setCurrentUser(data)
           // this should only be commented out on development
-          // window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
+          window.localStorage.setItem('CURRENT_USER', JSON.stringify(data))
           if(data.loggedUser.userType === 'worker'){
             connectToRooms(data.loggedUser.rooms, socket)
             navigate('/')
