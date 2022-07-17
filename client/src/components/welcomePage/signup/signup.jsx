@@ -41,7 +41,7 @@ function SignUp() {
       } 
     } catch (error) {
       if(error){
-        console.log('Sorry, This email Already Exists');
+        console.log(error);
       } 
     }
 

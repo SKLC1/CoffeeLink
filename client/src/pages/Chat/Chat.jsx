@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { Button } from "../../StyledComponents/Button.style";
 import { Form } from "../../StyledComponents/Form.style";
 import { Item } from "../../StyledComponents/Item.style";
 import { Message } from "../../StyledComponents/Message.style";
@@ -90,7 +91,7 @@ function Chat({socket}) {
       </div>
       <div className="chat-footer">
         <input type='text' onChange={(e)=>{setCurrentMsg(e.target.value)}}/>
-        <button onClick={sendMsg}>Send</button>
+        <Button onClick={sendMsg}>Send</Button>
       </div>
     </Form>
     </>
