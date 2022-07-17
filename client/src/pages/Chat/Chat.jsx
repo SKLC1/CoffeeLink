@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { Button } from "../../StyledComponents/Button.style";
 import { Form } from "../../StyledComponents/Form.style";
 import { Item } from "../../StyledComponents/Item.style";
+import { JustFlexRow } from "../../StyledComponents/JustFlexRow";
 import { Message } from "../../StyledComponents/Message.style";
 import { UserContext } from "../../UserContext";
 import './Chat.css'
@@ -90,8 +91,10 @@ function Chat({socket}) {
         </div>
       </div>
       <div className="chat-footer">
+        <JustFlexRow>
         <input type='text' onChange={(e)=>{setCurrentMsg(e.target.value)}}/>
         <Button onClick={sendMsg}>Send</Button>
+        </JustFlexRow>
       </div>
     </Form>
     </>
