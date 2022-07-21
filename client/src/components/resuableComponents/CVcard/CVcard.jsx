@@ -15,7 +15,6 @@ function CVcard({cvObj, jobID, socket}) {
   const [preferences, setPreferences] = useState([])
   const [isImageShown, setIsImageShown] = useState(false)
   const {cv, applicantID} = cvObj;
-
   
   useEffect(()=>{
     getJob()
