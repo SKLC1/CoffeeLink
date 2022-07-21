@@ -13,6 +13,7 @@ import ToggleUserType from "../../resuableComponents/toggleUserType/toggleUserTy
 
 function Login({setCurrentUser, socket}){
     const [type, setType] = useState('worker');
+    const [errorLogin, setErrorLogin] = useState(false);
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const navigate = useNavigate()
@@ -49,6 +50,7 @@ function Login({setCurrentUser, socket}){
         }
       } catch(e){
         console.log(e);
+        setErrorLogin(true)
       }
     }
     
@@ -70,6 +72,7 @@ function Login({setCurrentUser, socket}){
        <JustFlexRow>
         <Button>Sign Up</Button>
        </JustFlexRow>
+        {errorLogin && <div>Invalid Email or Password</div>}
         </Link>
         </p>
        </Form>
