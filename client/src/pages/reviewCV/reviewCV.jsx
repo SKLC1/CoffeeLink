@@ -56,7 +56,7 @@ function ReviewCV({socket}) {
       <CardContainer>
         {CVList.length === 0 ? !loading && <Form> No applicants yet</Form> : renderCVlist()}
       </CardContainer>
-       <SwipeButtons/>
+       <SwipeButtons CVList={CVList}/>
       <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
          <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>
          <Link to={`/hr_matches${job}`}><NavButton>Job's Matches</NavButton></Link>

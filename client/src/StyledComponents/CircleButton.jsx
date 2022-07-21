@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-export const CircleButton = styled.div`
+export const CircleButton = styled.button`
 padding: 1rem;
 /* margin: rem; */
 box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
@@ -8,6 +8,7 @@ border-radius: 20px;
 background-color: #fff;
 margin: auto;
 border-radius: 50px;
+border: none;
 width: 3rem;
 height: 3rem;
 margin: 0 1rem ;

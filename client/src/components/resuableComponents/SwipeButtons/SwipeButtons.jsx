@@ -3,19 +3,25 @@ import { JustFlexRow } from "../../../StyledComponents/JustFlexRow";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CloseIcon from '@mui/icons-material/Close';
 import { CircleButton } from "../../../StyledComponents/CircleButton";
+import { useEffect, useState } from "react";
 
+function SwipeButtons({CVlist}) {
+  const [list, setList] = useState([])
 
-function SwipeButtons() {
+  useEffect(()=>{
+    console.log(CVlist);
+  },[])
+
   return ( 
     <>
       <Form>
         <JustFlexRow>
-           <CircleButton>
+           {/* <CircleButton onClick={()=> swipe('right') }>
             <FavoriteIcon style={{color: 'hsl(210,99%,50%)'}}/>
            </CircleButton>
-           <CircleButton>
+           <CircleButton onClick={()=> swipe('left') }>
             <CloseIcon  style={{color: 'red'}}/>
-           </CircleButton>
+           </CircleButton> */}
         </JustFlexRow>
       </Form>
     </>
