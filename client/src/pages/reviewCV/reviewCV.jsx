@@ -11,6 +11,7 @@ import { Form } from '../../StyledComponents/Form.style.jsx';
 import BarLoader from "react-spinners/BarLoader";
 import { JustFlexRow } from '../../StyledComponents/JustFlexRow';
 import { baseUrl } from '../../components/resuableComponents/baseURL';
+import SwipeButtons from '../../components/resuableComponents/SwipeButtons/SwipeButtons';
 
 
 function ReviewCV({socket}) {
@@ -46,7 +47,6 @@ function ReviewCV({socket}) {
     })
   }
 
-
   return ( 
     <div>
       <JustFlexRow>
@@ -56,6 +56,7 @@ function ReviewCV({socket}) {
       <CardContainer>
         {CVList.length === 0 ? !loading && <Form> No applicants yet</Form> : renderCVlist()}
       </CardContainer>
+       <SwipeButtons/>
       <BottomNav backgroundColor={'hsl(212,99%,49%)'}>
          <Link to={`/my_preferences${job}`}><NavButton>Job's preferences</NavButton></Link>
          <Link to={`/hr_matches${job}`}><NavButton>Job's Matches</NavButton></Link>

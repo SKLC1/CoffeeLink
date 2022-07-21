@@ -72,7 +72,7 @@ function Login({setCurrentUser, socket}){
        <JustFlexRow>
         <Button>Sign Up</Button>
        </JustFlexRow>
-        {errorLogin && <div>Invalid Email or Password</div>}
+        {errorLogin && <div color="red">Invalid Email or Password</div>}
         </Link>
         </p>
        </Form>
