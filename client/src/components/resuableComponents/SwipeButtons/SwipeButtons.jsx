@@ -12,18 +12,25 @@ function SwipeButtons({CVlist}) {
     console.log(CVlist);
   },[])
 
+  function handleApprove(){
+
+  }
+  function handleDeny(){
+    
+  }
+
   return ( 
     <>
-      <Form>
+      <div>
         <JustFlexRow>
-           {/* <CircleButton onClick={()=> swipe('right') }>
+           <CircleButton onClick={()=>(handleApprove())}>
             <FavoriteIcon style={{color: 'hsl(210,99%,50%)'}}/>
            </CircleButton>
-           <CircleButton onClick={()=> swipe('left') }>
+           <CircleButton onClick={()=>(handleDeny())}>
             <CloseIcon  style={{color: 'red'}}/>
-           </CircleButton> */}
+           </CircleButton>
         </JustFlexRow>
-      </Form>
+      </div>
     </>
    );
 }
