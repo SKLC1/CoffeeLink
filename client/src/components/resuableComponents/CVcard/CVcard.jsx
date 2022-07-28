@@ -16,9 +16,11 @@ function CVcard({cvObj, jobID, socket}) {
   const [isImageShown, setIsImageShown] = useState(false)
   const {cv, applicantID} = cvObj;
   
+
   useEffect(()=>{
     getJob()
   },[])
+  
   async function getJob(){
     try { 
       const {data} = await axios.get(`${baseUrl}/jobs/${job}`)

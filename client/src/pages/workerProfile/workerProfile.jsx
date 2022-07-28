@@ -17,6 +17,14 @@ function WorkerProfile() {
         <div>Upload your CV</div>
         </Button>
       </Link>
+      <h2>
+        OR
+      </h2>
+      <Link to={'/cv_generate'}>
+        <Button>
+        <div>Generate CV from LinkedIn</div>
+        </Button>
+      </Link>
       <Link to={'/my_matches'}>
         <Button>
         <div>My Matches</div>

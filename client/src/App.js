@@ -17,6 +17,7 @@ import io from 'socket.io-client'
 import HRMatches from './pages/hrMatches/HRMatches.jsx';
 import Chat from './pages/Chat/Chat.jsx';
 import './App.css'
+import GenerateCV from './pages/cvUpload/cvGenerate.jsx';
 
 // socket connection
 // const socket = io.connect("http://localhost:5000");
@@ -49,6 +50,7 @@ function App() {
           <Route exact path='/profile' element={<WorkerProfile/>}></Route>
           <Route exact path='/my_matches' element={<WorkerMatches socket={socket} currentUser={currentUser}/>}></Route>
           <Route exact path='/cv_upload' element={<CVupload/>}></Route>
+          <Route exact path='/cv_generate' element={<GenerateCV/>}></Route>
           <Route exact path='/post_job' element={<UploadJob/>}></Route>
           <Route exact path='/chat:room' element={<Chat socket={socket} currentUser={currentUser}/>}></Route>
         </Routes>
